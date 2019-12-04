@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="styles.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <title>QuizApp</title>
+</head>
+
+<body>
+
+    <div id="score" class="score-container">
+
+    </div>
+    <div id="menu" class="menu-container ">
+        <div id="menu-buttons" class="menu-grid">
+            <div class="menu" id="menue-schrift">Hauptmenü</div>
+            <input type="text" id="name-eingabe" placeholder="Vorname">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            <button id="start-btn" class="start-btn btn">Start</button>
+        </div>
+
+    </div>
+    <div id="container" class="container hide">
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <input type="text" id="guess-answer" class="hide">
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        </div>
+        <button id="info" class="info-btn btn hide">i</button>
+        <div class="controls">
+
+            <button id="restart-btn" class="restart-btn btn hide">Restart</button>
+            <button id="next-btn" class="next-btn btn hide">Weiter</button>
+            <button id="answer-btn" class="answer-btn btn hide">Antwort</button>
+        </div>
+    </div>
+</body>
+
+</html>
