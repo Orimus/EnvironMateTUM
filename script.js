@@ -1,14 +1,24 @@
 
+const forscherM = document.getElementById("forscherM");
+const forscherW = document.getElementById("forscherW");
+const GVUnterschrift = document.getElementById("GVUnterschrift");
+const GVAusgabe = document.getElementById("GV");
+const GVswitch = document.querySelector("input[name=checkbox]");
+const introContainer = document.getElementById("intro-container");
+const intro = document.getElementById("intro");
 const MenuContainer = document.getElementById("menu");
 const Container = document.getElementById("container");
 const restartButton = document.getElementById("restart-btn");
 const answerButton = document.getElementById("answer-btn");
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const storyNextButton = document.getElementById("intro-next")
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const ScoreElement = document.getElementById("score");
+const nameEingabe = document.getElementById("name-eingabe");
+const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
 const infoButton = document.getElementById("info")
 let shuffledQuestions;
@@ -16,6 +26,9 @@ let currentIndex;
 let score = 0;
 let currentGuessAnswer;
 let currentExpl;
+let nameSpieler = "Default";
+let alterSpieler = "99";
+let storyFortschritt = 0;
 
 const questions = [
     /*
@@ -91,33 +104,58 @@ const questions = [
     }
 ]
 
+const storyText = [
+    { text: "Hallo " },
+    { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2100 in Grenzen zu halten" },
+    { text: "Dafür ist es am wichtigsten, den CO₂-Ausstoß der Bürger zu senken." },
+    { text: "Aber was bedeutet das überhaupt?" }
+]
+
 updateScore();
 restartButton.addEventListener("click", startGame);
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", setNextQuestion);
 answerButton.addEventListener("click", selectAnswerGuess);
-infoButton.addEventListener("click", showInfo)
+infoButton.addEventListener("click", showInfo);
+GVswitch.addEventListener("change", gvChange);
+storyNextButton.addEventListener("click", storyWeiter);
 
 
 
 function startGame() {
+    document.body.background = "./Bilder/Windrad.jpg";
+    const eingabeName = nameEingabe.value;
+    const eingabeAlter = alterEingabe.value;
     MenuContainer.classList.add("hide");
-    Container.classList.remove("hide");
-    console.log("Start");
-    score = 0;
-    updateScore();
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
-    questionContainerElement.classList.remove("hide");
+    console.log(eingabeName + " " + eingabeAlter);
+    score = 0;
+    updateScore();
+
+    //    Container.classList.remove("hide");
+    //    questionContainerElement.classList.remove("hide");
+    introContainer.classList.remove("hide");
+    forscherM.classList.remove("hide");
+    forscherW.classList.remove("hide");
+    intro.innerText = storyText[0].text + eingabeName + storyText[1].text;
+    storyFortschritt += 2;
     shuffledQuestions = questions.sort(() => Math.random() - 0.5);
     currentIndex = 0;
     setNextQuestion();
 
 }
 
+function storyWeiter() {
+    intro.innerText = storyText[storyFortschritt].text;
+    storyFortschritt += 1;
+}
+
 function updateScore() {
     ScoreElement.innerText = "Score: " + score;
 }
+
+
 
 function setNextQuestion() {
     resetState();
@@ -239,6 +277,17 @@ function selectAnswer(e) {
     infoButton.classList.remove("hide");
 }
 
+function gvChange(e) {
+    if (GVswitch.checked) {
+        GVAusgabe.innerText = "Hörenden Version";
+        GVUnterschrift.innerText = "(Empfohlen für die Benutzung Zuhause oder an ungestörten Orten)";
+    }
+    else {
+        GVAusgabe.innerText = "Gehörlosen Version";
+        GVUnterschrift.innerText = "(Empfohlen für die Benutzung im Unterricht oder an öffentlichen Plätzen)";
+    }
+}
+
 
 
 function setStatusClass(item, status) {
@@ -265,5 +314,8 @@ function resetState() {
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
+
     clearStatusClass(document.body);
+
+
 }

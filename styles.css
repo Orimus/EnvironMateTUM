@@ -11,6 +11,7 @@
 }
 
 body{
+    
     --hue: var(--hue-neutral);
     padding: 0;
     margin: 0;
@@ -22,6 +23,7 @@ body{
     background-color: hsl(var(--hue), 100%, 40%);
 
 }
+
 
 body.correct{
     --hue: var(--hue-correct);
@@ -39,6 +41,16 @@ body.ok{
     text-align: center;
 }
 
+.text{
+    font-size: small;
+    text-align: center;
+}
+
+.text2{
+    font-size: 40%;
+    text-align: center;
+}
+
 .menu-container{
     width: 200px;
     max-width: 80%;
@@ -46,6 +58,21 @@ body.ok{
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+}
+
+.intro-container{
+
+    position: absolute;
+    right: 200px;
+    bottom: 300px;
+    width: 800px;
+    height: 200px;
+
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px; 
 }
 
 .container{
@@ -77,6 +104,18 @@ body.ok{
     grid-template-columns: repeat(1,auto);
     gap: 10px;
     margin: 20px 0;
+}
+
+.figure{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.figure2{
+    position: absolute;
+    bottom: 10px;
+    right: 110px;
 }
 
 .btn-grid{
@@ -126,6 +165,16 @@ body.ok{
     padding: 10px 20px;
 }
 
+.intro-btn{
+    bottom: 5px;
+    right: 5px;
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px; 
+}
+
+
 .controls{
     
     display: flex;
@@ -140,7 +189,7 @@ body.ok{
 .switch {
     position: relative;
     display: inline-block;
-    width: 100px;
+    width: 120px;
     height: 34px;
   }
 
@@ -154,7 +203,7 @@ body.ok{
     position: absolute;
     cursor: pointer;
     top: 0;
-    left: 40px;
+    left: 60px;
     right: 0;
     bottom: 0;
     background-color: #ccc;
@@ -165,7 +214,7 @@ body.ok{
   .slider:before {
     position: absolute;
     text-align: center;
-    content: "M";
+    content: "";
     height: 26px;
     width: 26px;
     left: 4px;
