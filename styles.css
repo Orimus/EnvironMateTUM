@@ -21,6 +21,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: hsl(var(--hue), 100%, 40%);
+    background-position: right bottom;
 
 }
 

@@ -1,3 +1,5 @@
+import { getQuestions } from "fragen";
+
 
 const forscherM = document.getElementById("forscherM");
 const forscherW = document.getElementById("forscherW");
@@ -29,6 +31,8 @@ let currentExpl;
 let nameSpieler = "Default";
 let alterSpieler = "99";
 let storyFortschritt = 0;
+
+
 
 const questions = [
     /*
@@ -129,6 +133,7 @@ function startGame() {
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
+    console.log(getQuestions);
     console.log(eingabeName + " " + eingabeAlter);
     score = 0;
     updateScore();

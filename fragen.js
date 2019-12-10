@@ -1,4 +1,4 @@
-
+export let paul = "baum";
 
 export function getQuestions() {
     let erg = [ /*
@@ -71,6 +71,6 @@ export function getQuestions() {
         }
     ];
 
-    return erg;
+    return "Butterblume";
 }
 }
