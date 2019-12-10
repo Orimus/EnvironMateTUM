@@ -71,6 +71,5 @@ export function getQuestions() {
         }
     ];
 
-    return "Butterblume";
-}
+    return erg;
 }

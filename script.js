@@ -1,4 +1,5 @@
-import { getQuestions } from "fragen";
+import { paul } from "./fragen.js"
+let test = paul;
 
 
 const forscherM = document.getElementById("forscherM");
@@ -133,7 +134,7 @@ function startGame() {
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
-    console.log(getQuestions);
+    console.log(test);
     console.log(eingabeName + " " + eingabeAlter);
     score = 0;
     updateScore();
