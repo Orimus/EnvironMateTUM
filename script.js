@@ -1,7 +1,7 @@
 import { Questions } from "./fragen.js"
 
 
-
+const klimaVideo = document.getElementById("klimaVideo");
 const forscherM = document.getElementById("forscherM");
 const forscherW = document.getElementById("forscherW");
 const GVUnterschrift = document.getElementById("GVUnterschrift");
@@ -85,10 +85,13 @@ function storyWeiter() {
         storyFortschritt += 1;
     }
     else {
-        setNextQuestion();
-        Container.classList.remove("hide");
-        questionContainerElement.classList.remove("hide");
+        klimaVideo.classList.remove("hide");
+        //setNextQuestion();
+        //Container.classList.remove("hide");
+        //questionContainerElement.classList.remove("hide");
         introContainer.classList.add("hide");
+        forscherM.classList.add("hide");
+        forscherW.classList.add("hide");
     }
 }
 
