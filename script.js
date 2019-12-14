@@ -1,6 +1,8 @@
 import { Questions } from "./fragen.js"
 
 
+const graphContainer = document.getElementById("graph-container");
+const level = document.getElementById("level-container");
 const klimaVideo = document.getElementById("klimaVideo");
 const forscherM = document.getElementById("forscherM");
 const forscherW = document.getElementById("forscherW");
@@ -15,7 +17,8 @@ const restartButton = document.getElementById("restart-btn");
 const answerButton = document.getElementById("answer-btn");
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
-const storyNextButton = document.getElementById("intro-next")
+const storyNextButton = document.getElementById("intro-next");
+const videoNextButton = document.getElementById("video-next");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
@@ -85,7 +88,9 @@ function storyWeiter() {
         storyFortschritt += 1;
     }
     else {
+        videoNextButton.addEventListener("click", videoEnde);
         klimaVideo.classList.remove("hide");
+        setTimeout(function () { videoNextButton.classList.remove("hide") }, 3000);
         //setNextQuestion();
         //Container.classList.remove("hide");
         //questionContainerElement.classList.remove("hide");
@@ -93,6 +98,14 @@ function storyWeiter() {
         forscherM.classList.add("hide");
         forscherW.classList.add("hide");
     }
+}
+
+function videoEnde() {
+
+    klimaVideo.classList.add("hide");
+    videoNextButton.classList.add("hide");
+    level.classList.remove("hide");
+    setTimeout(function () { graphContainer.style.width = level.offsetWidth; }, 10);
 }
 
 function updateScore() {

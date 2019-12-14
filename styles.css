@@ -25,7 +25,6 @@ body{
 
 }
 
-
 body.correct{
     --hue: var(--hue-correct);
 }
@@ -40,6 +39,11 @@ body.ok{
 
 .menu{
     text-align: center;
+}
+
+.center{
+    position: absolute;
+    justify-self: center;
 }
 
 .text{
@@ -85,6 +89,18 @@ body.ok{
     box-shadow: 0 0 10px 2px;
 }
 
+.containerL{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px; 
+}
+
 .score-container{
     right: 40px;
     top: 40px;
@@ -117,6 +133,13 @@ body.ok{
     position: absolute;
     bottom: 10px;
     right: 110px;
+}
+
+.level-grid{
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    gap: 10px;
+    margin: 20px 0;
 }
 
 .btn-grid{
