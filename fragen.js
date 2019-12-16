@@ -1,52 +1,8 @@
 export let paul = "baum";
 
-export const Questions = [  /*
-        {
-    type: "singleChoice",
-    question: "Wie alt bist du?(12)",
-    answers: [
-        { text: "9", correct: false },
-        { text: "11", correct: false },
-        { text: "10", correct: false },
-        { text: "12", correct: true }
-    ]
-},
-{
-    type: "singleChoice",
-    question: "Wie alt bist du?(9)",
-    answers: [
-        { text: "9", correct: true },
-        { text: "11", correct: false },
-        { text: "10", correct: false },
-        { text: "12", correct: false }
-    ]
-},
-{
-    type: "singleChoice",
-    question: "Wie alt bist du?(10)",
-    answers: [
-        { text: "9", correct: false },
-        { text: "11", correct: false },
-        { text: "10", correct: true },
-        { text: "12", correct: false }
-    ]
-},
-{
-    type: "singleChoice",
-    question: "Wie alt bist du?(11)",
-    answers: [
-        { text: "9", correct: false },
-        { text: "11", correct: true },
-        { text: "10", correct: false },
-        { text: "12", correct: false }
-    ]
-},
-{
-    type: "guess",
-    question: "Wie viel Tonnen (1000kg = 1t) Müll verurscht Deutschland pro Jahr?",
-    answer: 100
+export const Questions = [
 
-}, */
+
     {
         type: "singleChoice",
         question: "Durch die Erwärmung der Erde schmilzt Schnee und Eis an den Polkappen (Arktis und Antarktis). Welche Auswirkungen hat dies auf die Weltmeere?",
@@ -72,6 +28,8 @@ export const Questions = [  /*
         expl: "Die Mehrwegplastikflasche kann bis zu 25 mal wieder sauber gemacht und neu befüllt werden. Die Einweg-Pfandflasche wird immerhin recycelt, aber um 1 neue Plastikflasche herzustellen braucht man viel nues Plastik, da Plastikflaschen nur zu etzwa 25 % Rrecyceltem material bestehen. Eine pfandfreie Plastikflasche landet oft im normalen Hausmüll und wird verbrannt. Übrigens: Auch wenn du Plastikmüll in den Plastikcontainer wirfst, wird er nicht immer recycelt. Weniger als die Hälfte des Plastikmülls wird tatsächlich zu neuem Plastik verarbeitet."
     }
 ];
+
+// Ernährungs Fragen singelChoice
 
 export const ernaehrungFragenS = [
     {
@@ -132,7 +90,9 @@ export const ernaehrungFragenS = [
 
 ]
 
-export const ernaehrungFragenA = [
+//Ernährungsfragen Ampel
+
+export const ernaehrungFragenA1 = [
 
     {
         type: "ampel",
@@ -171,7 +131,7 @@ export const ernaehrungFragenA = [
 
 ]
 
-export const konsumFragenA = [
+const konsumFragenA1 = [
     {
         type: "ampel",
         question: "Für deine Geburtstagsparty morgen musst du noch einige Sachen besorgen. Außerdem hast du für die 20 Partygäste nicht genug Geschirr zuhause. Was machst du?",
@@ -218,7 +178,7 @@ export const konsumFragenA = [
 
 ]
 
-export const energieFrageA = [
+const energieFragenA1 = [
     {
         type: "ampel",
         question: "Für die Party heute abend hast du noch schnell deine Lieblingsjeans gewaschen, die jetzt möglichst schnell trocknen soll. Was machst du?",
@@ -231,3 +191,50 @@ export const energieFrageA = [
     },
 
 ]
+
+
+
+const VerkehrFragenA1 = [
+    {
+        type: "ampel",
+        question: "Du möchtest in den Urlaub fliegen. Es gibt verschiedene Buchungsklassen, doch welche ist in Bezug auf deine CO2-Bilanz wohl die Beste?",
+        answers: [
+            { text: "Economy (Wenig Platz und Service)", correct: "correct" },
+            { text: "Business (Mehr Platz und besseres Essen)", correct: "ok" },
+            { text: "First (Oft so viel Platz, dass man die Füße ganz ausstrecken kann besonderen Service bekommt)", correct: "wrong" },
+        ]
+    }
+]
+
+export const VerkehrFragenA = [
+    VerkehrFragenA1,
+    [],
+    [],
+    [],
+    []
+]
+
+export const ernaehrungFragenA = [
+    ernaehrungFragenA1,
+    [],
+    [],
+    [],
+    []
+]
+
+export const konsumFragenA = [
+    konsumFragenA1,
+    [],
+    [],
+    [],
+    []
+]
+
+export const energieFragenA = [
+    energieFragenA1,
+    [],
+    [],
+    [],
+    []
+]
+

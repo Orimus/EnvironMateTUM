@@ -1,4 +1,4 @@
-import { Questions, ernaehrungFragenA, ernaehrungFragenS, konsumFragenA, energieFrageA } from "./fragen.js"
+import { Questions, ernaehrungFragenA, ernaehrungFragenS, konsumFragenA, energieFragenA, VerkehrFragenA } from "./fragen.js"
 
 const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
@@ -44,8 +44,17 @@ let geld = 0;
 let currentGuessAnswer;
 let currentExpl;
 let storyFortschritt = 0;
+let levelAkt = 0;
 
 
+
+const levelButtons = [
+    level1Button,
+    level2Button,
+    level3Button,
+    level4Button,
+    level5Button
+]
 
 const questions = Questions
 
@@ -80,7 +89,7 @@ function startGame() {
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
-    console.log(eingabeName + " " + eingabeAlter);
+    console.log(levelButtons[0]);
     score = 0;
     updateScore();
 
@@ -122,6 +131,7 @@ function storyWeiter() {
 function videoEnde() {
 
     klimaVideo.classList.add("hide");
+    klimaVideo.pause();
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
     setTimeout(function () { graphContainer.style.width = (level.offsetWidth) }, 10);
@@ -134,26 +144,26 @@ function setFragen(e) {
     currentIndex = 0;
     if (Kat == "Er") {
 
-        shuffledQuestions = ernaehrungFragenA.sort(() => Math.random() - 0.5);
+        shuffledQuestions = ernaehrungFragenA[levelAkt].sort(() => Math.random() - 0.5);
         console.log("juhu");
         ErnährungButton.classList.remove("btn");
         ErnährungButton.classList.add("btn-grau");
         ErnährungButton.removeEventListener("click", setFragen);
     }
     else if (Kat == "Kon") {
-        shuffledQuestions = konsumFragenA.sort(() => Math.random() - 0.5);
+        shuffledQuestions = konsumFragenA[levelAkt].sort(() => Math.random() - 0.5);
         KonsumButton.classList.remove("btn");
         KonsumButton.classList.add("btn-grau");
         KonsumButton.removeEventListener("click", setFragen);
     }
     else if (Kat == "Ver") {
-        shuffledQuestions = ernaehrungFragenS.sort(() => Math.random() - 0.5);
+        shuffledQuestions = VerkehrFragenA[levelAkt].sort(() => Math.random() - 0.5);
         VerkehrButton.classList.remove("btn");
         VerkehrButton.classList.add("btn-grau");
         VerkehrButton.removeEventListener("click", setFragen);
     }
     else {
-        shuffledQuestions = energieFrageA.sort(() => Math.random() - 0.5);
+        shuffledQuestions = energieFragenA[levelAkt].sort(() => Math.random() - 0.5);
         EnergieButton.classList.remove("btn");
         EnergieButton.classList.add("btn-grau");
         EnergieButton.removeEventListener("click", setFragen);
@@ -166,17 +176,58 @@ function setFragen(e) {
 }
 
 function backToKat() {
-    if (anzKatDone < 2) {
+    if (anzKatDone < 4) {
         restartButton.classList.add("hide");
         chartConatiner.classList.remove("hide");
         Container.classList.add("hide");
         questionContainerElement.classList.add("hide");
     }
     else {
+        anzKatDone = 0;
+        if (score > 2.5) {
+            levelButtons[levelAkt].classList.add("correct");
+        }
+        else if (score > 1.5) {
+            levelButtons[levelAkt].classList.add("ok");
+        }
+        else {
+            levelButtons[levelAkt].classList.add("wrong");
+        }
+        levelButtons[levelAkt].removeEventListener("click", levelUebersicht);
+        levelButtons[levelAkt].classList.add("btn-grau");
+        levelButtons[levelAkt].classList.remove("btn");
+        allBlue();
+        levelAkt += 1;
+        score = 0;
+        if (levelAkt < 5) {
+            levelButtons[levelAkt].classList.remove("btn-grau");
+            levelButtons[levelAkt].classList.add("btn");
+            levelButtons[levelAkt].addEventListener("click", levelUebersicht);
+        }
+        graphContainer.innerText = "Score: " + score;
+
         level.classList.remove("hide");
         Container.classList.add("hide");
 
     }
+}
+
+function allBlue() {
+    ErnährungButton.classList.remove("btn-grau");
+    KonsumButton.classList.remove("btn-grau");
+    EnergieButton.classList.remove("btn-grau");
+    VerkehrButton.classList.remove("btn-grau");
+
+    ErnährungButton.classList.add("btn");
+    KonsumButton.classList.add("btn");
+    EnergieButton.classList.add("btn");
+    VerkehrButton.classList.add("btn");
+
+    ErnährungButton.addEventListener("click", setFragen);
+    KonsumButton.addEventListener("click", setFragen);
+    EnergieButton.addEventListener("click", setFragen);
+    VerkehrButton.addEventListener("click", setFragen);
+
 }
 
 function levelUebersicht() {
@@ -237,6 +288,7 @@ function setNextQuestion() {
     else if (currentIndex >= shuffledQuestions.length) {
         questionElement.innerText = "Hopla, da sind uns wohl die Fragen ausgegangen.";
         console.log("Hopla, da sind uns wohl die Fragen ausgegangen.");
+        restartButton.classList.remove("hide");
     }
     else {
         showQuestion(shuffledQuestions[currentIndex]);
@@ -302,7 +354,7 @@ function selectAnswerAmpel(e) {
         button.classList.add(button.dataset.correct);
         button.removeEventListener("click", selectAnswerAmpel);
     })
-    nextButton.classList.remove("hide");
+    restartButton.classList.remove("hide");
     infoButton.classList.remove("hide");
 }
 
