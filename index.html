@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="styles.css" rel="stylesheet">
     <script type="module" defer src="script.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <title>QuizApp</title>
 </head>
 
@@ -26,14 +28,23 @@
     </div>
     <div id="level-container" class="container hide">
         <div id="graph-container" class="containerL ">
-            <img id="klima-graph" src="./Bilder/flat-2126876_1280.png" alt="Klimagraph" height="auto" width="600">
+
         </div>
         <div id="level-grid" class="level-grid ">
-            <button class="btn">Level 1</button>
-            <button class="btn">Level 2</button>
-            <button class="btn">Level 3</button>
-            <button class="btn">Level 4</button>
-            <button class="btn">Level 5</button>
+            <button id="level-btn1" class="btn ">Level 1</button>
+            <button id="level-btn2" class="btn-grau">Level 2</button>
+            <button id="level-btn3" class="btn-grau">Level 3</button>
+            <button id="level-btn4" class="btn-grau">Level 4</button>
+            <button id="level-btn5" class="btn-grau">Level 5</button>
+        </div>
+    </div>
+
+    <div id="chartContainer" style="width: 80%;" class="container hide">
+        <div class="btn-grid4 ">
+            <button id="ErKat" class="btn">Ernährung</button>
+            <button id="VerKat" class="btn">Verkehr</button>
+            <button id="EnKat" class="btn">Energie</button>
+            <button id="KonKat" class="btn">Konsum</button>
         </div>
     </div>
 
@@ -80,7 +91,7 @@
         <button id="info" class="info-btn btn hide">i</button>
         <div class="controls">
 
-            <button id="restart-btn" class="restart-btn btn hide">Restart</button>
+            <button id="restart-btn" class="restart-btn btn hide">Nächste Kategorie</button>
             <button id="next-btn" class="next-btn btn hide">Weiter</button>
             <button id="answer-btn" class="answer-btn btn hide">Antwort</button>
         </div>

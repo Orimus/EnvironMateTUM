@@ -1,6 +1,6 @@
-import { Questions } from "./fragen.js"
+import { Questions, ernaehrungFragenA, ernaehrungFragenS, konsumFragenA, energieFrageA } from "./fragen.js"
 
-
+const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
 const level = document.getElementById("level-container");
 const klimaVideo = document.getElementById("klimaVideo");
@@ -13,6 +13,15 @@ const introContainer = document.getElementById("intro-container");
 const intro = document.getElementById("intro");
 const MenuContainer = document.getElementById("menu");
 const Container = document.getElementById("container");
+const ErnährungButton = document.getElementById("ErKat");
+const KonsumButton = document.getElementById("KonKat");
+const EnergieButton = document.getElementById("EnKat");
+const VerkehrButton = document.getElementById("VerKat");
+const level1Button = document.getElementById("level-btn1");
+const level2Button = document.getElementById("level-btn2");
+const level3Button = document.getElementById("level-btn3");
+const level4Button = document.getElementById("level-btn4");
+const level5Button = document.getElementById("level-btn5");
 const restartButton = document.getElementById("restart-btn");
 const answerButton = document.getElementById("answer-btn");
 const startButton = document.getElementById("start-btn");
@@ -26,14 +35,14 @@ const ScoreElement = document.getElementById("score");
 const nameEingabe = document.getElementById("name-eingabe");
 const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
-const infoButton = document.getElementById("info")
+const infoButton = document.getElementById("info");
 let shuffledQuestions;
 let currentIndex;
+let anzKatDone = 0;
 let score = 0;
+let geld = 0;
 let currentGuessAnswer;
 let currentExpl;
-let nameSpieler = "Default";
-let alterSpieler = "99";
 let storyFortschritt = 0;
 
 
@@ -49,13 +58,18 @@ const storyText = [
 ]
 
 updateScore();
-restartButton.addEventListener("click", startGame);
+restartButton.addEventListener("click", backToKat);
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", setNextQuestion);
 answerButton.addEventListener("click", selectAnswerGuess);
 infoButton.addEventListener("click", showInfo);
 GVswitch.addEventListener("change", gvChange);
 storyNextButton.addEventListener("click", storyWeiter);
+level1Button.addEventListener("click", levelUebersicht);
+ErnährungButton.addEventListener("click", setFragen);
+KonsumButton.addEventListener("click", setFragen);
+VerkehrButton.addEventListener("click", setFragen);
+EnergieButton.addEventListener("click", setFragen);
 
 
 
@@ -70,13 +84,18 @@ function startGame() {
     score = 0;
     updateScore();
 
+    ErnährungButton.dataset.kat = "Er";
+    KonsumButton.dataset.kat = "Kon";
+    VerkehrButton.dataset.kat = "Ver";
+    EnergieButton.dataset.kat = "En";
+
 
     introContainer.classList.remove("hide");
     forscherM.classList.remove("hide");
     forscherW.classList.remove("hide");
     intro.innerText = storyText[0].text + eingabeName + storyText[1].text;
     storyFortschritt += 2;
-    shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+
     currentIndex = 0;
 
 
@@ -105,7 +124,101 @@ function videoEnde() {
     klimaVideo.classList.add("hide");
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
-    setTimeout(function () { graphContainer.style.width = level.offsetWidth; }, 10);
+    setTimeout(function () { graphContainer.style.width = (level.offsetWidth) }, 10);
+
+}
+
+function setFragen(e) {
+    const selectedButton = e.target;
+    const Kat = selectedButton.dataset.kat;
+    currentIndex = 0;
+    if (Kat == "Er") {
+
+        shuffledQuestions = ernaehrungFragenA.sort(() => Math.random() - 0.5);
+        console.log("juhu");
+        ErnährungButton.classList.remove("btn");
+        ErnährungButton.classList.add("btn-grau");
+        ErnährungButton.removeEventListener("click", setFragen);
+    }
+    else if (Kat == "Kon") {
+        shuffledQuestions = konsumFragenA.sort(() => Math.random() - 0.5);
+        KonsumButton.classList.remove("btn");
+        KonsumButton.classList.add("btn-grau");
+        KonsumButton.removeEventListener("click", setFragen);
+    }
+    else if (Kat == "Ver") {
+        shuffledQuestions = ernaehrungFragenS.sort(() => Math.random() - 0.5);
+        VerkehrButton.classList.remove("btn");
+        VerkehrButton.classList.add("btn-grau");
+        VerkehrButton.removeEventListener("click", setFragen);
+    }
+    else {
+        shuffledQuestions = energieFrageA.sort(() => Math.random() - 0.5);
+        EnergieButton.classList.remove("btn");
+        EnergieButton.classList.add("btn-grau");
+        EnergieButton.removeEventListener("click", setFragen);
+    }
+    anzKatDone += 1;
+    chartConatiner.classList.add("hide");
+    Container.classList.remove("hide");
+    questionContainerElement.classList.remove("hide");
+    setNextQuestion();
+}
+
+function backToKat() {
+    if (anzKatDone < 2) {
+        restartButton.classList.add("hide");
+        chartConatiner.classList.remove("hide");
+        Container.classList.add("hide");
+        questionContainerElement.classList.add("hide");
+    }
+    else {
+        level.classList.remove("hide");
+        Container.classList.add("hide");
+
+    }
+}
+
+function levelUebersicht() {
+    level.classList.add("hide");
+
+    chartConatiner.classList.remove("hide");
+
+
+    /*
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Desktop Search Engine Market Share - 2016"
+        },
+        data: [{
+            type: "pie",
+            startAngle: 240,
+            yValueFormatString: "##0.00\"%\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                { y: 79.45, label: "Verkehr" },
+                { y: 7.31, label: "Konsum" },
+                { y: 7.06, label: "Energie" },
+                { y: 4.91, label: "Ernährung" }
+            ]
+        }]
+    });
+    chart.render();
+    let labels = chart.get("data");
+    labels[0].addEventListener("click", paull);
+    let i;
+    for (i = 0; i < labels.length; i++) {
+        console.log(labels[i]);
+    }
+    //const label1 = document.getElementById("Verkehr")
+*/
+
+}
+
+function paull() {
+    console.log("aha");
 }
 
 function updateScore() {
@@ -116,7 +229,7 @@ function updateScore() {
 
 function setNextQuestion() {
     resetState();
-    if (currentIndex == 2) {
+    if (currentIndex == 1) {
         questionElement.innerText = "Du hast alle Fragen beantwortet. Dein Punktestand beträgt: " + score;
 
         restartButton.classList.remove("hide");
@@ -221,7 +334,7 @@ function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     if (correct) {
-        score += 1;
+        geld += 1;
         console.log("" + score);
         updateScore();
     }
