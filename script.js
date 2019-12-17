@@ -198,14 +198,14 @@ function backToKat() {
         levelButtons[levelAkt].classList.remove("btn");
         allBlue();
         levelAkt += 1;
-        score = 0;
+
         if (levelAkt < 5) {
             levelButtons[levelAkt].classList.remove("btn-grau");
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", levelUebersicht);
         }
         graphContainer.innerText = "Score: " + score;
-
+        score = 0;
         level.classList.remove("hide");
         Container.classList.add("hide");
 

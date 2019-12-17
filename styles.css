@@ -46,7 +46,10 @@ body.ok{
     justify-self: center;
 }
 
-
+.headline{
+    font-size: 40%;
+    
+}
 
 .text{
     font-size: small;
@@ -216,7 +219,7 @@ body.ok{
     padding: 10px 20px; 
 }
 
-.start-btn, .next-btn, .answer-btn, .reset-btn{
+.start-btn, .next-btn, .answer-btn, .restart-btn{
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
