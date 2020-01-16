@@ -180,6 +180,12 @@ const konsumFragenA1 = [
 
 const energieFragenA1 = [
     {
+        hintergrund: "",
+        items: [
+            "./Bilder/icons8-hamburger-100.png",
+            "./Bilder/icons8-pommes-100.png",
+            "./Bilder/professorfrauneu.png"
+        ],
         type: "ampel",
         question: "Für die Party heute abend hast du noch schnell deine Lieblingsjeans gewaschen, die jetzt möglichst schnell trocknen soll. Was machst du?",
         answers: [
@@ -189,40 +195,40 @@ const energieFragenA1 = [
         ],
         expl: "Der Wäschetrockner verbraucht, auch im Eco-Programm, sehr viel Energie und sollte wenn überhaupt nur im Notfall verwendet werden. Vor allem im Sommer trocknet die Wäsche draußen sehr schnell und macht einen Trockner eigentlich überflüssig. Über die Heizung solltest du am besten nichts hängen, da es im Inneren zu einem Hitzestau kommen kann und die Kleidung im Schlimmsten Fall sogar in Brand geraten könnte."
     },
-
-    {
-        type: "ampel",
-        question: "Du möchtest dich waschen, wie tust du dies am effizientesten innerhalb eine Woche?",
-        answers: [
-            { text: "Ich gehe jeden Tag Baden.", correct: "ok" },
-            { text: "Ich Dusche jeden Tag für 15 Minuten", correct: "wrong" },
-            { text: "Ich Dusche Montag, Mittwoch und Freitag jeweils 15 Minuten. Am Sonntag nehme ich ein Bad.", correct: "correct" },
-        ],
-        expl: "Duschen verbraucht pro Minute in etwa 12l. Eine durchschnittliche Badewanne fasst ca. 140l. So ergibt sich ein Wasserverbrauch pro Woche von: \n 140*7 = 980 Liter \n 15*12*7 = 1260 Liter \n 3*12*15+140 = 680 \n Um deinen Wasserverbrauch und somit auch deinen Energieverbrauch zu reduzieren kannst du also, wenn du nur jeden zweiten Tag duschst, sogar am Wochenende ein Bad nehmen. Wenn du allerdings unter 12 Minuten duschst, ist das Duschen dem Baden vorzuziehen."
-    },
-
-    {
-        type: "ampel",
-        question: "Du willst dir Nudeln kochen, dafür brauchst du einen Liter Wasser. Wie erhitzt du diesen am effizientesten?",
-        answers: [
-            { text: "Ich benutze einen Induktionsherd", correct: "correct" },
-            { text: "Ich benutze einen konventionellen Herd", correct: "wrong" },
-            { text: "Ich benutze den Wasserkocher", correct: "ok" },
-        ],
-        expl: "Ein konventioneller Herd muss zunächst die Herdplatte, dann den Topf und dann erst das Wasser erhitzen. Ein Wasserkocher erhitzt zwar das Wasser direkt, trotzdem ist ein Induktionsherd, auf Grund des Verfahrens, effizienter.",
-    },
-
-    {
-        type: "",
-        question: "",
-        answers: [
-            { text: "", correct: "" },
-            { text: "", correct: "" },
-            { text: "", correct: "" },
-        ],
-        expl: "",
-    }
-
+    /*
+        {
+            type: "ampel",
+            question: "Du möchtest dich waschen, wie tust du dies am effizientesten innerhalb eine Woche?",
+            answers: [
+                { text: "Ich gehe jeden Tag Baden.", correct: "ok" },
+                { text: "Ich Dusche jeden Tag für 15 Minuten", correct: "wrong" },
+                { text: "Ich Dusche Montag, Mittwoch und Freitag jeweils 15 Minuten. Am Sonntag nehme ich ein Bad.", correct: "correct" },
+            ],
+            expl: "Duschen verbraucht pro Minute in etwa 12l. Eine durchschnittliche Badewanne fasst ca. 140l. So ergibt sich ein Wasserverbrauch pro Woche von: \n 140*7 = 980 Liter \n 15*12*7 = 1260 Liter \n 3*12*15+140 = 680 \n Um deinen Wasserverbrauch und somit auch deinen Energieverbrauch zu reduzieren kannst du also, wenn du nur jeden zweiten Tag duschst, sogar am Wochenende ein Bad nehmen. Wenn du allerdings unter 12 Minuten duschst, ist das Duschen dem Baden vorzuziehen."
+        },
+    
+        {
+            type: "ampel",
+            question: "Du willst dir Nudeln kochen, dafür brauchst du einen Liter Wasser. Wie erhitzt du diesen am effizientesten?",
+            answers: [
+                { text: "Ich benutze einen Induktionsherd", correct: "correct" },
+                { text: "Ich benutze einen konventionellen Herd", correct: "wrong" },
+                { text: "Ich benutze den Wasserkocher", correct: "ok" },
+            ],
+            expl: "Ein konventioneller Herd muss zunächst die Herdplatte, dann den Topf und dann erst das Wasser erhitzen. Ein Wasserkocher erhitzt zwar das Wasser direkt, trotzdem ist ein Induktionsherd, auf Grund des Verfahrens, effizienter.",
+        },
+    
+        {
+            type: "",
+            question: "",
+            answers: [
+                { text: "", correct: "" },
+                { text: "", correct: "" },
+                { text: "", correct: "" },
+            ],
+            expl: "",
+        }
+    */
 ]
 
 

@@ -36,6 +36,8 @@ const nameEingabe = document.getElementById("name-eingabe");
 const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
 const infoButton = document.getElementById("info");
+const PommesIcon = document.getElementById("Pommes");
+const BurgerIcon = document.getElementById("Hamburger");
 let shuffledQuestions;
 let currentIndex;
 let anzKatDone = 0;
@@ -79,6 +81,7 @@ ErnährungButton.addEventListener("click", setFragen);
 KonsumButton.addEventListener("click", setFragen);
 VerkehrButton.addEventListener("click", setFragen);
 EnergieButton.addEventListener("click", setFragen);
+PommesIcon.addEventListener("click", startGame)
 
 
 
@@ -163,6 +166,7 @@ function setFragen(e) {
         VerkehrButton.removeEventListener("click", setFragen);
     }
     else {
+
         shuffledQuestions = energieFragenA[levelAkt].sort(() => Math.random() - 0.5);
         EnergieButton.classList.remove("btn");
         EnergieButton.classList.add("btn-grau");
@@ -318,14 +322,22 @@ function showQuestion(question) {
         EingabeElement.classList.remove("hide");
     }
     else if (question.type == "ampel") {
+        let i = 0;
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
+            const bild1 = document.createElement("input");
+            bild1.type = "image";
+            bild1.src = question.items[i];
+            bild1.dataset.correct = answer.correct;
+            bild1.addEventListener("click", selectAnswerAmpel);
+            i += 1;
             const button = document.createElement("button");
             button.innerText = answer.text;
             button.classList.add("btn");
             button.dataset.correct = answer.correct;
             button.addEventListener("click", selectAnswerAmpel);
             answerButtonsElement.appendChild(button);
+            answerButtonsElement.appendChild(bild1);
         })
     }
 }
