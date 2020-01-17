@@ -337,12 +337,13 @@ function showQuestion(question) {
         questionContainerElement.background = "./Bilder/kiosk-2106622_1280.png";
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
+            /*
             const bild1 = document.createElement("input");
             bild1.type = "image";
             bild1.src = question.items[i];
             bild1.dataset.correct = answer.correct;
             bild1.addEventListener("click", selectAnswerAmpel);
-
+*/
             i += 1;
             const button = document.createElement("button");
             button.innerText = answer.text;
@@ -350,7 +351,6 @@ function showQuestion(question) {
             button.dataset.correct = answer.correct;
             button.addEventListener("click", selectAnswerAmpel);
             answerButtonsElement.appendChild(button);
-            answerButtonsElement.appendChild(bild1);
         })
     }
 }
