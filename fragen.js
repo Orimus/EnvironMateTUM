@@ -180,7 +180,7 @@ const konsumFragenA1 = [
 
 const energieFragenA1 = [
     {
-        hintergrund: "",
+        hintergrund: "./Bilder/kiosk-2106622_1280.png",
         items: [
             "./Bilder/icons8-hamburger-100.png",
             "./Bilder/icons8-pommes-100.png",

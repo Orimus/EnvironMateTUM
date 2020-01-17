@@ -4,6 +4,7 @@ const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
 const level = document.getElementById("level-container");
 const klimaVideo = document.getElementById("klimaVideo");
+const klimaVideoSub = document.getElementById("klimaVideoSub");
 const forscherM = document.getElementById("forscherM");
 const forscherW = document.getElementById("forscherW");
 const GVUnterschrift = document.getElementById("GVUnterschrift");
@@ -120,21 +121,31 @@ function storyWeiter() {
     }
     else {
         videoNextButton.addEventListener("click", videoEnde);
-        klimaVideo.classList.remove("hide");
         setTimeout(function () { videoNextButton.classList.remove("hide") }, 3000);
-        //setNextQuestion();
-        //Container.classList.remove("hide");
-        //questionContainerElement.classList.remove("hide");
         introContainer.classList.add("hide");
         forscherM.classList.add("hide");
         forscherW.classList.add("hide");
+        if (GVswitch.checked) {
+            klimaVideoSub.classList.remove("hide");
+        }
+        else {
+            klimaVideo.classList.remove("hide");
+            //setNextQuestion();
+            //Container.classList.remove("hide");
+            //questionContainerElement.classList.remove("hide");
+        }
     }
 }
 
 function videoEnde() {
-
-    klimaVideo.classList.add("hide");
-    klimaVideo.pause();
+    if (GVswitch.checked) {
+        klimaVideoSub.classList.add("hide");
+        klimaVideoSub.pause();
+    }
+    else {
+        klimaVideo.classList.add("hide");
+        klimaVideo.pause();
+    }
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
     setTimeout(function () { graphContainer.style.width = (level.offsetWidth) }, 10);
@@ -323,6 +334,7 @@ function showQuestion(question) {
     }
     else if (question.type == "ampel") {
         let i = 0;
+        questionContainerElement.background = "./Bilder/kiosk-2106622_1280.png";
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
             const bild1 = document.createElement("input");
@@ -330,6 +342,7 @@ function showQuestion(question) {
             bild1.src = question.items[i];
             bild1.dataset.correct = answer.correct;
             bild1.addEventListener("click", selectAnswerAmpel);
+
             i += 1;
             const button = document.createElement("button");
             button.innerText = answer.text;
