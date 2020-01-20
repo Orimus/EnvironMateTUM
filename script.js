@@ -1,4 +1,4 @@
-import { Questions, ernaehrungFragenA, ernaehrungFragenS, konsumFragenA, energieFragenA, VerkehrFragenA } from "./fragen.js"
+import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA } from "./fragen.js"
 
 const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
@@ -37,8 +37,10 @@ const nameEingabe = document.getElementById("name-eingabe");
 const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
 const infoButton = document.getElementById("info");
-const PommesIcon = document.getElementById("Pommes");
-const BurgerIcon = document.getElementById("Hamburger");
+const itBox = document.getElementById("info/tipp-box");
+
+let eingabeName;
+let eingabeAlter
 let shuffledQuestions;
 let currentIndex;
 let anzKatDone = 0;
@@ -59,7 +61,7 @@ const levelButtons = [
     level5Button
 ]
 
-const questions = Questions
+
 
 
 const storyText = [
@@ -82,14 +84,14 @@ ErnährungButton.addEventListener("click", setFragen);
 KonsumButton.addEventListener("click", setFragen);
 VerkehrButton.addEventListener("click", setFragen);
 EnergieButton.addEventListener("click", setFragen);
-PommesIcon.addEventListener("click", startGame)
 
 
 
 function startGame() {
     document.body.background = "./Bilder/Windrad.jpg";
-    const eingabeName = nameEingabe.value;
-    const eingabeAlter = alterEingabe.value;
+    document.body.backgroundSize = "cover";
+    eingabeName = nameEingabe.value;
+    eingabeAlter = alterEingabe.value;
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
@@ -186,6 +188,8 @@ function setFragen(e) {
     anzKatDone += 1;
     chartConatiner.classList.add("hide");
     Container.classList.remove("hide");
+    infoButton.classList.remove("hide");
+
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
 }
@@ -312,6 +316,8 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
+    infoButton.innerText = "Tipp";
+    itBox.innerText = question.tipp;
     currentExpl = question.expl;
     if (question.type == "singleChoice") {
         questionElement.innerText = question.question;
@@ -334,33 +340,63 @@ function showQuestion(question) {
     }
     else if (question.type == "ampel") {
         let i = 0;
-        questionContainerElement.background = "./Bilder/kiosk-2106622_1280.png";
+
+        questionContainerElement.style.backgroundImage = "url('" + question.hintergrund + "')";
+        questionContainerElement.style.backgroundSize = "100% 100%";
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
-            /*
+
             const bild1 = document.createElement("input");
             bild1.type = "image";
             bild1.src = question.items[i];
             bild1.dataset.correct = answer.correct;
             bild1.addEventListener("click", selectAnswerAmpel);
-*/
+            bild1.style.position = "absolute";
+            /*
+                        let h = new Image();
+                        h.src = question.items[i];
+                        console.log(h.width)
+                        let sizingfactor = 100 / h.height;
+                        console.log(sizingfactor)
+                        */
+            bild1.height = 150;
+            //   bild1.width = bild1.width * sizingfactor;
+
+            bild1.style.left = question.koords[i].left;
+            bild1.style.bottom = question.koords[i].bottom;
+
+
+
             i += 1;
+            /*
             const button = document.createElement("button");
             button.innerText = answer.text;
             button.classList.add("btn");
             button.dataset.correct = answer.correct;
             button.addEventListener("click", selectAnswerAmpel);
             answerButtonsElement.appendChild(button);
+            */
+            questionContainerElement.appendChild(bild1);
         })
     }
 }
 
 
 function showInfo() {
-    questionElement.innerText = currentExpl;
+    itBox.classList.remove("hide");
+
+    infoButton.removeEventListener("click", showInfo);
+    infoButton.addEventListener("click", hideInfo);
+}
+
+function hideInfo() {
+    itBox.classList.add("hide");
+    infoButton.removeEventListener("click", hideInfo);
+    infoButton.addEventListener("click", showInfo);
 }
 
 function selectAnswerAmpel(e) {
+    itBox.innerText = currentExpl;
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     console.log(correct);
@@ -380,6 +416,7 @@ function selectAnswerAmpel(e) {
         button.removeEventListener("click", selectAnswerAmpel);
     })
     restartButton.classList.remove("hide");
+    infoButton.innerText = "i";
     infoButton.classList.remove("hide");
 }
 
@@ -456,10 +493,10 @@ function clearStatusClass(element) {
 }
 
 function resetState() {
-    infoButton.classList.add("hide");
+    //infoButton.classList.add("hide");
     nextButton.classList.add("hide");
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    while (questionContainerElement.firstChild) {
+        questionContainerElement.removeChild(questionContainerElement.firstChild);
     }
 
     clearStatusClass(document.body);

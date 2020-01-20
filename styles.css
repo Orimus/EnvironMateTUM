@@ -87,8 +87,25 @@ body.ok{
 }
 
 .container{
-    width: 800px;
-    max-width: 80%;
+    /* width: 800px; */
+    
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.qccontainer{
+    height: 90%;
+}
+
+.it-box{
+    bottom: 13%;
+    right: 12%;
+    position: fixed; 
+    width: 60%;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -147,10 +164,9 @@ body.ok{
 }
 
 .btn-grid{
-    display: grid;
-    grid-template-columns: repeat(1,auto);
-    gap: 10px;
-    margin: 20px 0;
+    display: flex;
+    
+    
 }
 
 .btn-grid4{
