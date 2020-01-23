@@ -97,6 +97,14 @@ body.ok{
     box-shadow: 0 0 10px 2px;
 }
 
+.containerW{
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
 .qccontainer{
     height: 90%;
 }
@@ -157,6 +165,9 @@ body.ok{
 }
 
 .level-grid{
+    position: relative;
+    left: 4%;
+    width: 88%;
     display: grid;
     grid-template-columns: repeat(5,auto);
     gap: 10px;

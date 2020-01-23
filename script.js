@@ -39,6 +39,7 @@ const EingabeElement = document.getElementById("guess-answer");
 const infoButton = document.getElementById("info");
 const itBox = document.getElementById("info/tipp-box");
 
+
 let eingabeName;
 let eingabeAlter
 let shuffledQuestions;
@@ -150,7 +151,7 @@ function videoEnde() {
     }
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
-    setTimeout(function () { graphContainer.style.width = (level.offsetWidth) }, 10);
+    
 
 }
 
@@ -188,7 +189,7 @@ function setFragen(e) {
     anzKatDone += 1;
     chartConatiner.classList.add("hide");
     Container.classList.remove("hide");
-    infoButton.classList.remove("hide");
+    //infoButton.classList.remove("hide");
 
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
@@ -223,7 +224,7 @@ function backToKat() {
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", levelUebersicht);
         }
-        graphContainer.innerText = "Score: " + score;
+        
         score = 0;
         level.classList.remove("hide");
         Container.classList.add("hide");
@@ -493,7 +494,7 @@ function clearStatusClass(element) {
 }
 
 function resetState() {
-    //infoButton.classList.add("hide");
+    infoButton.classList.add("hide");
     nextButton.classList.add("hide");
     while (questionContainerElement.firstChild) {
         questionContainerElement.removeChild(questionContainerElement.firstChild);
