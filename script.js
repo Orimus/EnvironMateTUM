@@ -1,5 +1,7 @@
 import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA } from "./fragen.js"
+import { adjustKlimaGraph } from "./klimaGraph.js"
 
+const graph = document.getElementById("graph");
 const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
 const level = document.getElementById("level-container");
@@ -151,7 +153,7 @@ function videoEnde() {
     }
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
-    
+
 
 }
 
@@ -206,12 +208,15 @@ function backToKat() {
         anzKatDone = 0;
         if (score > 2.5) {
             levelButtons[levelAkt].classList.add("correct");
+            adjustKlimaGraph("correct", "green", levelAkt);
         }
         else if (score > 1.5) {
             levelButtons[levelAkt].classList.add("ok");
+            adjustKlimaGraph("ok", "yellow", levelAkt);
         }
         else {
             levelButtons[levelAkt].classList.add("wrong");
+            adjustKlimaGraph("wrong", "red", levelAkt);
         }
         levelButtons[levelAkt].removeEventListener("click", levelUebersicht);
         levelButtons[levelAkt].classList.add("btn-grau");
@@ -224,13 +229,15 @@ function backToKat() {
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", levelUebersicht);
         }
-        
+
         score = 0;
         level.classList.remove("hide");
         Container.classList.add("hide");
 
     }
 }
+
+
 
 function allBlue() {
     ErnährungButton.classList.remove("btn-grau");

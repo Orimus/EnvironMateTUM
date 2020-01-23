@@ -5,6 +5,7 @@ const item2 = document.getElementById("level-grid")
 const graph = document.getElementById("graph");
 graph.style.border = "1px solid #000000"
 console.log(graph.style.width)
+
 let sfactor = Math.round(window.document.body.clientWidth * 0.78) / graph.style.width;
 console.log(sfactor)
 graph.style.width *= sfactor
@@ -14,6 +15,7 @@ console.log(graph.style.height)
 
 let maxX = Math.round(window.document.body.clientWidth * 0.75)
 let maxY = Math.round(window.document.body.clientHeight * 0.75)
+let Y = maxY;
 let levelDist = (maxX - 40) / 5 - 5
 let tempDist = (maxY - 30) / 4 - 5
 let koordWerte = [{ a: "m", x: 40, y: 30 }, { a: "l", x: 40, y: maxY }, { a: "l", x: maxX, y: maxY },
@@ -55,6 +57,18 @@ for (i = 1; i < 5; i++) {
 for (i = 0; i < 6; i++) {
     koordsystem.textAlign = "center";
     koordsystem.fillText((2020 + i * 6) + "", 40 + i * levelDist, maxY + 15)
+}
+
+export function adjustKlimaGraph(correct, color, level) {
+
+    console.log("works");
+    koordsystem.beginPath();
+    koordsystem.moveTo(40 + level, Y);
+    koordsystem.lineTo(40 + (level + 1) * levelDist, Y - 50);
+    Y = Y - 50
+    koordsystem.strokeStyle = color;
+    koordsystem.stroke();
+
 }
 
 /*
