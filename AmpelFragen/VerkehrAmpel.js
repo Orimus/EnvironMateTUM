@@ -1,10 +1,10 @@
 export const VerkehrFragenA1 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Verkehr/Level1/Economy.png",
+            "./Bilder/Ampel/Verkehr/Level1/Business.png",
+            "./Bilder/Ampel/Verkehr/Level1/First.png"
         ],
         koords: [
             { bottom: "30%", left: "20%" },
@@ -24,11 +24,16 @@ export const VerkehrFragenA1 = [
 
 export const VerkehrFragenA2 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Verkehr/Level2/Zug.png",
+            "./Bilder/Ampel/Verkehr/Level2/Auto.png",
+            "./Bilder/Ampel/Verkehr/Level2/Flugzeug.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Euer Sommerurlaub soll an das Mittelmeer gehen (ca. 1500 km). Dafür könntet ihr fliegen, mit dem Auto fahren oder den Zug nehmen. Aber: Was ist denn auf der Langstrecke die beste Wahl?",
@@ -43,11 +48,16 @@ export const VerkehrFragenA2 = [
 
 export const VerkehrFragenA3 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Verkehr/Level3/Fahrrad.png",
+            "./Bilder/Ampel/Verkehr/Level3/Escooter.png",
+            "./Bilder/Ampel/Verkehr/Level3/Auto.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Für deinen Weg zur Schule gibt es mehrere Optionen. Welche wählst du?",
@@ -56,17 +66,22 @@ export const VerkehrFragenA3 = [
             { text: "E-Scooter", correct: "ok" },
             { text: "Auto der Eltern", correct: "wrong" },
         ],
-        expl: "Gerade mit ausleihbaren E-Scootern wird oft nicht gut umgegangen, weswegen sie teilweise nach nur 3 Monaten schon kaputt sind. Bei der Produktion brauchen sie zudem viel Ernährung, da die Akkus viele Rohstoffe brauchen. Daher lieber Fahrradfahren oder laufen. Das Auto ist die schlechteste Wahl, es benötigt selbst unter den besten Voraussetzungen etwa doppelt so viel Ernährung wie ein E-Scooter."
+        expl: "Gerade mit ausleihbaren E-Scootern wird oft nicht gut umgegangen, weswegen sie teilweise nach nur 3 Monaten schon kaputt sind. Bei der Produktion brauchen sie zudem viel Verkehr, da die Akkus viele Rohstoffe brauchen. Daher lieber Fahrradfahren oder laufen. Das Auto ist die schlechteste Wahl, es benötigt selbst unter den besten Voraussetzungen etwa doppelt so viel Verkehr wie ein E-Scooter."
     }
 ]
 
 export const VerkehrFragenA4 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Verkehr/Level4/Kleinwagen.png",
+            "./Bilder/Ampel/Verkehr/Level4/SUV.png",
+            "./Bilder/Ampel/Verkehr/Level4/Sportwagen.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Deine Eltern wollen sich ein neues Auto kaufen. Welches hat wohl die beste Klimabilanz?",
@@ -75,17 +90,22 @@ export const VerkehrFragenA4 = [
             { text: "SUV (Stadtgeländewagen mit erhöhtem Komfort) / Geländewagen", correct: "ok" },
             { text: "Sportwagen", correct: "wrong" }
         ],
-        expl: "Ein SUV ist schwerer als ein normales Auto und hat in der Regel Motoren mit mehr Leistung. Dadurch braucht er mehr Ernährung zum Fahren. Noch schlechter sind Sportwagen, die durch besonders starke Motoren extrem viel Benzin verbrauchen. Quelle: https://www.greenpeace.de/sites/www.greenpeace.de/files/publications/s02571_gp_report_suv_09_2019_es.pdf"
+        expl: "Ein SUV ist schwerer als ein normales Auto und hat in der Regel Motoren mit mehr Leistung. Dadurch braucht er mehr Verkehr zum Fahren. Noch schlechter sind Sportwagen, die durch besonders starke Motoren extrem viel Benzin verbrauchen. Quelle: https://www.greenpeace.de/sites/www.greenpeace.de/files/publications/s02571_gp_report_suv_09_2019_es.pdf"
     }
 ]
 
 export const VerkehrFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Verkehr/Level5/Minivan.png",
+            "./Bilder/Ampel/Verkehr/Level5/SUV.png",
+            "./Bilder/Ampel/Verkehr/Level5/Sportwagen.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Deine Eltern wollen sich ein neues Auto kaufen, das möglichst groß ist. Welches hat wohl die beste Klimabilanz??",

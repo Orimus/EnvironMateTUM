@@ -28,9 +28,9 @@ export const ernaehrungFragenA2 = [
     {
         hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Ernährung/Level2/flasche3.png",
+            "./Bilder/Ampel/Ernährung/Level2/flasche2.png",
+            "./Bilder/Ampel/Ernährung/Level2/flasche1.png"
         ],
         koords: [
             { bottom: "30%", left: "20%" },
@@ -54,7 +54,7 @@ export const ernaehrungFragenA3 = [
         items: [
             "./Bilder/Ampel/Ernährung/Level3/pommes.png",
             "./Bilder/Ampel/Ernährung/Level3/käsesemmel.png",
-            "./Bilder/Ampel/Ernährung/Level3/beef-1239198_1920.png"
+            "./Bilder/Ampel/Ernährung/Level3/beef-1239198_1920.jpg"
         ],
         koords: [
             { bottom: "30%", left: "20%" },
@@ -78,7 +78,7 @@ export const ernaehrungFragenA4 = [
         items: [
             "./Bilder/Ampel/Ernährung/Level4/milch1.png",
             "./Bilder/Ampel/Ernährung/Level4/hafermilch2.png",
-            "./Bilder/Ampel/Ernährung/Level4/sojamilch.png"
+            "./Bilder/Ampel/Ernährung/Level4/sojamlich.png"
         ],
         koords: [
             { bottom: "30%", left: "20%" },
@@ -101,9 +101,9 @@ export const ernaehrungFragenA5 = [
     {
         hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level1/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level1/wäscheleine.png"
+            "./Bilder/Ampel/Ernährung/Level5/heizung.png",
+            "./Bilder/Ampel/Ernährung/Level5/wäschetrockner.png",
+            "./Bilder/Ampel/Ernährung/Level5/wäscheleine.png"
         ],
         koords: [
             { bottom: "30%", left: "20%" },

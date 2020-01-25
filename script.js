@@ -208,15 +208,15 @@ function backToKat() {
         anzKatDone = 0;
         if (score > 2.5) {
             levelButtons[levelAkt].classList.add("correct");
-            adjustKlimaGraph("correct", "green", levelAkt);
+            adjustKlimaGraph(0.2, "green", levelAkt);
         }
         else if (score > 1.5) {
             levelButtons[levelAkt].classList.add("ok");
-            adjustKlimaGraph("ok", "yellow", levelAkt);
+            adjustKlimaGraph(0.5, "orange", levelAkt);
         }
         else {
             levelButtons[levelAkt].classList.add("wrong");
-            adjustKlimaGraph("wrong", "red", levelAkt);
+            adjustKlimaGraph(0.8, "red", levelAkt);
         }
         levelButtons[levelAkt].removeEventListener("click", levelUebersicht);
         levelButtons[levelAkt].classList.add("btn-grau");
