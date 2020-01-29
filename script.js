@@ -1,5 +1,6 @@
-import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA } from "./fragen.js"
+import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA, WFragen } from "./fragen.js"
 import { adjustKlimaGraph } from "./klimaGraph.js"
+import { showKonto, changeLC } from "./lamaCoins.js";
 
 const graph = document.getElementById("graph");
 const chartConatiner = document.getElementById("chartContainer");
@@ -34,7 +35,6 @@ const videoNextButton = document.getElementById("video-next");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
-const ScoreElement = document.getElementById("score");
 const nameEingabe = document.getElementById("name-eingabe");
 const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
@@ -48,7 +48,6 @@ let shuffledQuestions;
 let currentIndex;
 let anzKatDone = 0;
 let score = 0;
-let geld = 0;
 let currentGuessAnswer;
 let currentExpl;
 let storyFortschritt = 0;
@@ -74,7 +73,7 @@ const storyText = [
     { text: "Aber was bedeutet das überhaupt?" }
 ]
 
-updateScore();
+
 restartButton.addEventListener("click", backToKat);
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", setNextQuestion);
@@ -82,7 +81,7 @@ answerButton.addEventListener("click", selectAnswerGuess);
 infoButton.addEventListener("click", showInfo);
 GVswitch.addEventListener("change", gvChange);
 storyNextButton.addEventListener("click", storyWeiter);
-level1Button.addEventListener("click", levelUebersicht);
+level1Button.addEventListener("click", Wfrage);
 ErnährungButton.addEventListener("click", setFragen);
 KonsumButton.addEventListener("click", setFragen);
 VerkehrButton.addEventListener("click", setFragen);
@@ -100,7 +99,7 @@ function startGame() {
     restartButton.classList.add("hide");
     console.log(levelButtons[0]);
     score = 0;
-    updateScore();
+
 
     ErnährungButton.dataset.kat = "Er";
     KonsumButton.dataset.kat = "Kon";
@@ -153,6 +152,7 @@ function videoEnde() {
     }
     videoNextButton.classList.add("hide");
     level.classList.remove("hide");
+    showKonto();
 
 
 }
@@ -218,7 +218,7 @@ function backToKat() {
             levelButtons[levelAkt].classList.add("wrong");
             adjustKlimaGraph(0.8, "red", levelAkt);
         }
-        levelButtons[levelAkt].removeEventListener("click", levelUebersicht);
+        levelButtons[levelAkt].removeEventListener("click", Wfrage);
         levelButtons[levelAkt].classList.add("btn-grau");
         levelButtons[levelAkt].classList.remove("btn");
         allBlue();
@@ -227,7 +227,7 @@ function backToKat() {
         if (levelAkt < 5) {
             levelButtons[levelAkt].classList.remove("btn-grau");
             levelButtons[levelAkt].classList.add("btn");
-            levelButtons[levelAkt].addEventListener("click", levelUebersicht);
+            levelButtons[levelAkt].addEventListener("click", Wfrage);
         }
 
         score = 0;
@@ -257,8 +257,22 @@ function allBlue() {
 
 }
 
-function levelUebersicht() {
+
+function Wfrage() {
     level.classList.add("hide");
+    shuffledQuestions = WFragen[levelAkt].sort(() => Math.random() - 0.5);
+    Container.classList.remove("hide");
+    infoButton.classList.remove("hide");
+
+    questionContainerElement.classList.remove("hide");
+
+    setNextQuestion();
+}
+
+function levelUebersicht() {
+
+
+
 
     chartConatiner.classList.remove("hide");
 
@@ -299,16 +313,15 @@ function paull() {
     console.log("aha");
 }
 
-function updateScore() {
-    ScoreElement.innerText = "Score: " + score;
-}
+
 
 
 
 function setNextQuestion() {
     resetState();
     if (currentIndex == 1) {
-        questionElement.innerText = "Du hast alle Fragen beantwortet. Dein Punktestand beträgt: " + score;
+        questionElement.innerText = "";
+
 
         restartButton.classList.remove("hide");
     }
@@ -328,8 +341,11 @@ function showQuestion(question) {
     itBox.innerText = question.tipp;
     currentExpl = question.expl;
     if (question.type == "singleChoice") {
+        restartButton.innerText = "Weiter zu den Kategorien."
+        infoButton.classList.remove("hide")
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
+            console.log(answer.text)
             const button = document.createElement("button");
             button.innerText = answer.text;
             button.classList.add("btn");
@@ -338,6 +354,7 @@ function showQuestion(question) {
             }
             button.addEventListener("click", selectAnswer);
             answerButtonsElement.appendChild(button);
+            answerButtonsElement.classList.remove("hide");
         })
     }
     else if (question.type == "guess") {
@@ -347,8 +364,12 @@ function showQuestion(question) {
         EingabeElement.classList.remove("hide");
     }
     else if (question.type == "ampel") {
+        restartButton.innerText = "Nächste Kategorie."
         let i = 0;
-
+        questionContainerElement.classList.remove("hide");
+        answerButtonsElement.classList.add("hide");
+        Container.classList.remove("containerW");
+        Container.classList.add("container");
         questionContainerElement.style.backgroundImage = "url('" + question.hintergrund + "')";
         questionContainerElement.style.backgroundSize = "100% 100%";
         questionElement.innerText = question.question;
@@ -404,19 +425,21 @@ function hideInfo() {
 }
 
 function selectAnswerAmpel(e) {
+
     itBox.innerText = currentExpl;
+
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     console.log(correct);
     if (correct == "correct") {
         score += 1;
         console.log("" + score);
-        updateScore();
+
     }
     else if (correct == "ok") {
         score += 0.5;
         console.log("" + score);
-        updateScore();
+
     }
     document.body.classList.add(correct);
     Array.from(answerButtonsElement.children).forEach(button => {
@@ -453,12 +476,14 @@ function selectAnswerGuess(e) {
 }
 
 function selectAnswer(e) {
+    infoButton.innerText = "i";
+    itBox.innerText = currentExpl;
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     if (correct) {
-        geld += 1;
+        changeLC(1);
         console.log("" + score);
-        updateScore();
+
     }
     setStatusClass(document.body, correct);
     Array.from(answerButtonsElement.children).forEach(button => {
@@ -503,8 +528,13 @@ function clearStatusClass(element) {
 function resetState() {
     infoButton.classList.add("hide");
     nextButton.classList.add("hide");
+    itBox.classList.add("hide");
+
     while (questionContainerElement.firstChild) {
         questionContainerElement.removeChild(questionContainerElement.firstChild);
+    }
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
 
     clearStatusClass(document.body);

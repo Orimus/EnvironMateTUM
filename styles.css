@@ -98,6 +98,7 @@ body.ok{
 }
 
 .containerW{
+    max-height: 90%;
     width: 80%;
     background-color: white;
     border-radius: 5px;
@@ -130,9 +131,9 @@ body.ok{
     box-shadow: 0 0 10px 2px; 
 }
 
-.score-container{
-    right: 40px;
-    top: 40px;
+.konto-container{
+    right: 1%;
+    top: 27%;
     position: fixed; 
     width: 100px;
     max-width: 80%;
