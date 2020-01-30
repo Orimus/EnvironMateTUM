@@ -7,9 +7,9 @@ export const konsumFragenA1 = [
             "./Bilder/Ampel/Konsum/Level1/pappgeschirr.png"
         ],
         koords: [
-            { bottom: "25%", left: "46%" },
-            { bottom: "45%", left: "65%" },
-            { bottom: "30%", left: "75%" },
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Für deine Geburtstagsparty morgen musst du noch einige Sachen besorgen. Außerdem hast du für die 20 Partygäste nicht genug Geschirr zuhause. Was machst du?",
@@ -31,9 +31,9 @@ export const konsumFragenA2 = [
             "./Bilder/Ampel/Konsum/Level2/bank.png"
         ],
         koords: [
-            { bottom: "25%", left: "46%" },
-            { bottom: "45%", left: "65%" },
-            { bottom: "30%", left: "30%" },
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Im Einkaufszentrum hast du dir schnell eine leckere Sushi-Box to-go geholt. Was machst du mit der Plastikbox in der die Sushirollen verpackt waren?",
@@ -55,9 +55,9 @@ export const konsumFragenA3 = [
             "./Bilder/Ampel/Konsum/Level3/chlorfreierblock.png"
         ],
         koords: [
-            { bottom: "25%", left: "46%" },
-            { bottom: "45%", left: "65%" },
-            { bottom: "30%", left: "75%" },
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Für die Schule brauchst du dringend einen neuen Schreibblock, welchen wählst du?",
@@ -79,9 +79,9 @@ export const konsumFragenA4 = [
             "./Bilder/Ampel/Konsum/Level4/bioshirt.png"
         ],
         koords: [
-            { bottom: "25%", left: "46%" },
-            { bottom: "45%", left: "65%" },
-            { bottom: "30%", left: "75%" },
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
 
         type: "ampel",
@@ -105,9 +105,9 @@ export const konsumFragenA5 = [
             "./Bilder/Ampel/Konsum/Level5/papiertonne.png"
         ],
         koords: [
-            { bottom: "25%", left: "46%" },
-            { bottom: "45%", left: "65%" },
-            { bottom: "30%", left: "75%" },
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
         ],
         type: "ampel",
         question: "Gerade ist zuhause die Milch ausgegangen. In welche Tonne gehört der leere Tetrapack?",

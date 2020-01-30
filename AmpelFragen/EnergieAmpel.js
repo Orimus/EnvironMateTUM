@@ -76,7 +76,27 @@ export const energieFragenA3 = [
 ]
 
 export const energieFragenA4 = [
-    
+    {
+        hintergrund: "./Bilder/Ampel/Energie/Level3/küche.png",
+        items: [
+            "./Bilder/Ampel/Energie/Level4/Groß.png",
+            "./Bilder/Ampel/Energie/Level4/Klein.png",
+            "./Bilder/Ampel/Energie/Level4/Der Passende.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "20%" },
+            { bottom: "30%", left: "45%" },
+            { bottom: "30%", left: "65%" },
+        ],
+        type: "ampel",
+        question: "Du möchtest Nudeln kochen. Du kannst einen Topf nehmen, der größer oder kleiner als die Platte ist, oder einen der genauso groß ist. Welcher ist die beste Wahl?",
+        answers:[
+            {text: "Der Große", correct: "ok"},
+            {text: "Der Kleine", correct: "wrong"},
+            {text: "Der Passende", correct: "correct"}
+            ],
+        expl: "Beim Großen dauert das Kochen länger, da nur ein Teil des Topfs beheizt wird. Ist er zu klein, heizt die Platte jedoch am Topf vorbei und die Energie geht direkt verloren."
+        }
 ]
 
 export const energieFragenA5 = [

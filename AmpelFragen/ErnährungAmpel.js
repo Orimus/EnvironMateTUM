@@ -1,7 +1,7 @@
 export const ernaehrungFragenA1 = [
 
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Hintergrund_Äpfel.svg",
         items: [
             "./Bilder/Ampel/Ernährung/Level1/apfel_biobayern.png",
             "./Bilder/Ampel/Ernährung/Level1/apfel_bioitalien.png",

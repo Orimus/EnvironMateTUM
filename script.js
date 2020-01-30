@@ -68,7 +68,7 @@ const levelButtons = [
 
 const storyText = [
     { text: "Hallo " },
-    { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2100 in Grenzen zu halten" },
+    { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2050 in Grenzen zu halten" },
     { text: "Dafür ist es am wichtigsten, den CO₂-Ausstoß der Bürger zu senken." },
     { text: "Aber was bedeutet das überhaupt?" }
 ]
@@ -106,16 +106,26 @@ function startGame() {
     VerkehrButton.dataset.kat = "Ver";
     EnergieButton.dataset.kat = "En";
 
+    showForscher();
 
-    introContainer.classList.remove("hide");
-    forscherM.classList.remove("hide");
-    forscherW.classList.remove("hide");
     intro.innerText = storyText[0].text + eingabeName + storyText[1].text;
     storyFortschritt += 2;
 
     currentIndex = 0;
 
 
+}
+
+function showForscher() {
+    introContainer.classList.remove("hide");
+    forscherM.classList.remove("hide");
+    forscherW.classList.remove("hide");
+}
+
+function hideForscher() {
+    introContainer.classList.add("hide");
+    forscherM.classList.add("hide");
+    forscherW.classList.add("hide");
 }
 
 function storyWeiter() {
@@ -126,9 +136,7 @@ function storyWeiter() {
     else {
         videoNextButton.addEventListener("click", videoEnde);
         setTimeout(function () { videoNextButton.classList.remove("hide") }, 3000);
-        introContainer.classList.add("hide");
-        forscherM.classList.add("hide");
-        forscherW.classList.add("hide");
+        hideForscher();
         if (GVswitch.checked) {
             klimaVideoSub.classList.remove("hide");
         }
@@ -229,6 +237,9 @@ function backToKat() {
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", Wfrage);
         }
+        else {
+            console.log("ENDE");
+        }
 
         score = 0;
         level.classList.remove("hide");
@@ -260,12 +271,14 @@ function allBlue() {
 
 function Wfrage() {
     level.classList.add("hide");
+    restartButton.classList.add("hide");
     shuffledQuestions = WFragen[levelAkt].sort(() => Math.random() - 0.5);
     Container.classList.remove("hide");
-    infoButton.classList.remove("hide");
+    // infoButton.classList.remove("hide");
 
-    questionContainerElement.classList.remove("hide");
-
+    answerButtonsElement.classList.remove("hide");
+    questionContainerElement.classList.add("hide");
+    currentIndex = 0;
     setNextQuestion();
 }
 
@@ -309,9 +322,6 @@ function levelUebersicht() {
 
 }
 
-function paull() {
-    console.log("aha");
-}
 
 
 
@@ -341,8 +351,13 @@ function showQuestion(question) {
     itBox.innerText = question.tipp;
     currentExpl = question.expl;
     if (question.type == "singleChoice") {
+        Container.classList.add("containerW");
+        Container.classList.remove("container");
         restartButton.innerText = "Weiter zu den Kategorien."
-        infoButton.classList.remove("hide")
+        if (levelAkt != 0) {
+            infoButton.classList.remove("hide")
+        }
+
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
             console.log(answer.text)
@@ -393,6 +408,7 @@ function showQuestion(question) {
 
             bild1.style.left = question.koords[i].left;
             bild1.style.bottom = question.koords[i].bottom;
+            bild1.style.border = "10px solid black, 100%, 30%";
 
 
 
@@ -427,25 +443,29 @@ function hideInfo() {
 function selectAnswerAmpel(e) {
 
     itBox.innerText = currentExpl;
+    itBox.classList.remove("hide");
 
+    itBox.style.backgroundColor = "hsl(0, 100%, 50%)"
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     console.log(correct);
     if (correct == "correct") {
         score += 1;
-        console.log("" + score);
+        itBox.style.backgroundColor = "hsl(145, 100%, 50%)"
 
     }
     else if (correct == "ok") {
         score += 0.5;
-        console.log("" + score);
-
+        itBox.style.backgroundColor = " hsl(55, 100%, 50%)";
     }
+
     document.body.classList.add(correct);
-    Array.from(answerButtonsElement.children).forEach(button => {
-        button.classList.add(button.dataset.correct);
-        button.removeEventListener("click", selectAnswerAmpel);
+    Array.from(questionContainerElement.children).forEach(input => {
+        //input.classList.add(button.dataset.correct);
+        input.removeEventListener("click", selectAnswerAmpel);
+
     })
+
     restartButton.classList.remove("hide");
     infoButton.innerText = "i";
     infoButton.classList.remove("hide");
