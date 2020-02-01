@@ -8,9 +8,9 @@ export const ernaehrungFragenA1 = [
             "./Bilder/Ampel/Ernährung/Level1/apfel_neuseeland.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du willst dir in der Pause am Kiosk Obst kaufen. Du kaufst …",
@@ -33,9 +33,9 @@ export const ernaehrungFragenA2 = [
             "./Bilder/Ampel/Ernährung/Level2/flasche1.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du möchtest dir etwas zu Trinken kaufen. Du kaufst …",
@@ -57,9 +57,9 @@ export const ernaehrungFragenA3 = [
             "./Bilder/Ampel/Ernährung/Level3/beef-1239198_1920.jpg"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "In der großen Pause hast du richtig Hunger. Du kaufst …",
@@ -81,9 +81,9 @@ export const ernaehrungFragenA4 = [
             "./Bilder/Ampel/Ernährung/Level4/sojamlich.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Beim Bäcker willst du dir in der Pause eine heiße Schokolade kaufen. Zum Glück hat dein Bäcker mehrere Alternativen: ",
@@ -106,9 +106,9 @@ export const ernaehrungFragenA5 = [
             "./Bilder/Ampel/Ernährung/Level5/wäscheleine.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du kaufst für das Wochenendfrühstück ein. Du entscheidest dich für … ",

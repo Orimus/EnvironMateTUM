@@ -1,6 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
 }
 
 :root{
@@ -63,7 +64,7 @@ body.ok{
 
 .menu-container{
     display: flex;
-    width: 200px;
+    
     max-width: 80%;
     background-color: white;
     border-radius: 5px;
@@ -97,6 +98,18 @@ body.ok{
     box-shadow: 0 0 10px 2px;
 }
 
+.klimaPaket-container{
+    position: absolute;
+    left: 4%;
+    bottom: 12%;
+    max-height: 65%;
+    width: 75%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
 .containerW{
     max-height: 90%;
     width: 80%;
@@ -104,6 +117,19 @@ body.ok{
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+}
+
+.containerQ{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    max-height: 82%;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+
 }
 
 .qccontainer{
@@ -132,13 +158,13 @@ body.ok{
 }
 
 .konto-container{
-    right: 1%;
-    top: 27%;
+    right: 2%;
+    top: 3%;
     position: fixed; 
-    width: 100px;
+    width: 150px;
     max-width: 80%;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
 }
@@ -183,6 +209,13 @@ body.ok{
 
 .btn-grid4{
     display: grid;
+    grid-template-columns: repeat(1,auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.klimapakete{
+    display: grid;
     grid-template-columns: repeat(2,auto);
     gap: 10px;
     margin: 20px 0;
@@ -213,6 +246,23 @@ body.ok{
 
 .btn.ok{
     --hue: var(--hue-ok)
+}
+
+.btn-kaufen{
+    
+        border: 1px solid  hsl(145, 100%, 20%);
+        background-color: hsl(145, 100%, 30%);
+        border-radius: 1px;
+        padding: 5px 10px;
+        color: white;
+        outline: none;
+        
+    
+}
+
+.btn-kaufen:hover{
+    color: black;
+    background-color: hsl(145, 100%, 40%);
 }
 
 .btn-grau.correct{
@@ -277,7 +327,7 @@ body.ok{
 .switch {
     position: relative;
     display: inline-block;
-    width: 120px;
+    width: 190px;
     height: 34px;
   }
 
@@ -291,7 +341,7 @@ body.ok{
     position: absolute;
     cursor: pointer;
     top: 0;
-    left: 60px;
+    left: 130px;
     right: 0;
     bottom: 0;
     background-color: #ccc;

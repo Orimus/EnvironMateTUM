@@ -1,7 +1,8 @@
 import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA, WFragen } from "./fragen.js"
 import { adjustKlimaGraph } from "./klimaGraph.js"
-import { showKonto, changeLC } from "./lamaCoins.js";
+import { showKonto, changeLC, klimaPaketUebersicht, klimaPaketHide } from "./lamaCoins.js";
 
+const ErklärVideo = document.getElementById("Erklaervideo");
 const graph = document.getElementById("graph");
 const chartConatiner = document.getElementById("chartContainer");
 const graphContainer = document.getElementById("graph-container");
@@ -52,6 +53,10 @@ let currentGuessAnswer;
 let currentExpl;
 let storyFortschritt = 0;
 let levelAkt = 0;
+let skipCounter = 0;
+let videoWarNichtDa = true
+let nichtErsterLauf = false;
+let punkteNeu = 0;
 
 
 
@@ -67,21 +72,32 @@ const levelButtons = [
 
 
 const storyText = [
-    { text: "Hallo " },
+/*0*/    { text: "Hallo " },
     { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2050 in Grenzen zu halten" },
     { text: "Dafür ist es am wichtigsten, den CO₂-Ausstoß der Bürger zu senken." },
-    { text: "Aber was bedeutet das überhaupt?" }
+    { text: "Aber was bedeutet das überhaupt?" },
+/*4*/    { text: "Leider hast du dich im Durchschnitt für die klimaschädlichsten Optionen entschieden. Das kannst du besser, " },
+    { text: "Sammle in der folgenden Wissensrunde Bonuspunkte, um die verursachte Klimaerwärmung in diesem Level durch ein Klimapaket zu reduzieren." },
+/*6*/    { text: "Du hast dich im Durchschnitt für den Mittelweg entschieden, " },
+    { text: ". Da ist noch Luft nach oben!" },
+    { text: "Sammle in der folgenden Wissensrunde Bonuspunkte, um die verursachte Klimaerwärmung in diesem Level durch ein Klimapaket zu reduzieren." },
+/*9*/    { text: "Prima, " },
+    { text: "! Du hast dich im Durchschnitt für die klimafreundlichsten Antwortmöglichkeiten entschieden." },
+    { text: "Sammelst du in der kommenden Wissensrunde noch Bonuspunkte, kannst du die Klimaerwärmung sogar noch reduzieren." },
+    { text: "" },
 ]
 
 
+
+
 restartButton.addEventListener("click", backToKat);
-startButton.addEventListener("click", startGame);
-nextButton.addEventListener("click", setNextQuestion);
+startButton.addEventListener("click", startGame); //startGame
+nextButton.addEventListener("click", showForscher);
 answerButton.addEventListener("click", selectAnswerGuess);
 infoButton.addEventListener("click", showInfo);
 GVswitch.addEventListener("change", gvChange);
 storyNextButton.addEventListener("click", storyWeiter);
-level1Button.addEventListener("click", Wfrage);
+level1Button.addEventListener("click", backToKat);
 ErnährungButton.addEventListener("click", setFragen);
 KonsumButton.addEventListener("click", setFragen);
 VerkehrButton.addEventListener("click", setFragen);
@@ -97,7 +113,7 @@ function startGame() {
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
-    console.log(levelButtons[0]);
+
     score = 0;
 
 
@@ -105,8 +121,8 @@ function startGame() {
     KonsumButton.dataset.kat = "Kon";
     VerkehrButton.dataset.kat = "Ver";
     EnergieButton.dataset.kat = "En";
-
     showForscher();
+
 
     intro.innerText = storyText[0].text + eingabeName + storyText[1].text;
     storyFortschritt += 2;
@@ -117,6 +133,10 @@ function startGame() {
 }
 
 function showForscher() {
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    }
+    nextButton.classList.add("hide")
     introContainer.classList.remove("hide");
     forscherM.classList.remove("hide");
     forscherW.classList.remove("hide");
@@ -129,13 +149,11 @@ function hideForscher() {
 }
 
 function storyWeiter() {
-    if (storyFortschritt < storyText.length) {
-        intro.innerText = storyText[storyFortschritt].text;
-        storyFortschritt += 1;
-    }
-    else {
+
+    if (storyFortschritt == 4 && videoWarNichtDa) {
+        videoWarNichtDa = false;
         videoNextButton.addEventListener("click", videoEnde);
-        setTimeout(function () { videoNextButton.classList.remove("hide") }, 3000);
+        setTimeout(function () { videoNextButton.classList.remove("hide") }, 3);
         hideForscher();
         if (GVswitch.checked) {
             klimaVideoSub.classList.remove("hide");
@@ -147,20 +165,65 @@ function storyWeiter() {
             //questionContainerElement.classList.remove("hide");
         }
     }
+    else if ((storyFortschritt == 6 || storyFortschritt == 9 || storyFortschritt == 12) && nichtErsterLauf) {
+        hideForscher();
+        Wfrage();
+        nichtErsterLauf = false;
+    }
+    else if (storyFortschritt == 6 || storyFortschritt == 9) {
+        nichtErsterLauf = true
+        intro.innerText = storyText[storyFortschritt].text + eingabeName + storyText[storyFortschritt + 1].text;
+        storyFortschritt += 2;
+    }
+    else if (storyFortschritt == 4) {
+        nichtErsterLauf = true
+        intro.innerText = storyText[storyFortschritt].text + eingabeName + "!";
+        storyFortschritt += 1;
+    }
+    else if (storyFortschritt == 99) {
+        klimaPaketUebersicht(punkteNeu);
+        introContainer.classList.add("hide");
+        Container.classList.add("hide");
+        videoNextButton.classList.remove("hide");
+    }
+    else {
+        intro.innerText = storyText[storyFortschritt].text;
+        storyFortschritt += 1;
+
+    }
+    console.log(nichtErsterLauf)
 }
 
 function videoEnde() {
-    if (GVswitch.checked) {
-        klimaVideoSub.classList.add("hide");
-        klimaVideoSub.pause();
+    if (skipCounter == 0) {
+        if (GVswitch.checked) {
+            klimaVideoSub.classList.add("hide");
+            klimaVideoSub.pause();
+        }
+        else {
+            klimaVideo.classList.add("hide");
+            klimaVideo.pause();
+        }
+        videoNextButton.classList.add("hide");
+        ErklärVideo.classList.remove("hide");
+        setTimeout(function () { videoNextButton.classList.remove("hide") }, 3);
+        skipCounter += 1;
     }
-    else {
-        klimaVideo.classList.add("hide");
-        klimaVideo.pause();
+    else if (skipCounter == 1) {
+        ErklärVideo.classList.add("hide");
+        ErklärVideo.pause();
+        chartConatiner.classList.remove("hide");
+        videoNextButton.classList.add("hide");
+        skipCounter += 1;
+        showKonto();
     }
-    videoNextButton.classList.add("hide");
-    level.classList.remove("hide");
-    showKonto();
+    else if (skipCounter == 2) {
+        klimaPaketHide();
+        hideForscher();
+        level.classList.remove("hide");
+        videoNextButton.classList.add("hide");
+    }
+
 
 
 }
@@ -206,6 +269,7 @@ function setFragen(e) {
 }
 
 function backToKat() {
+    punkteNeu = 0;
     if (anzKatDone < 4) {
         restartButton.classList.add("hide");
         chartConatiner.classList.remove("hide");
@@ -215,18 +279,21 @@ function backToKat() {
     else {
         anzKatDone = 0;
         if (score > 2.5) {
+            storyFortschritt = 9;
             levelButtons[levelAkt].classList.add("correct");
-            adjustKlimaGraph(0.2, "green", levelAkt);
+            adjustKlimaGraph(0.25, "green", levelAkt);
         }
         else if (score > 1.5) {
+            storyFortschritt = 6;
             levelButtons[levelAkt].classList.add("ok");
             adjustKlimaGraph(0.5, "orange", levelAkt);
         }
         else {
+            storyFortschritt = 4;
             levelButtons[levelAkt].classList.add("wrong");
-            adjustKlimaGraph(0.8, "red", levelAkt);
+            adjustKlimaGraph(1, "red", levelAkt);
         }
-        levelButtons[levelAkt].removeEventListener("click", Wfrage);
+        levelButtons[levelAkt].removeEventListener("click", backToKat);
         levelButtons[levelAkt].classList.add("btn-grau");
         levelButtons[levelAkt].classList.remove("btn");
         allBlue();
@@ -235,14 +302,17 @@ function backToKat() {
         if (levelAkt < 5) {
             levelButtons[levelAkt].classList.remove("btn-grau");
             levelButtons[levelAkt].classList.add("btn");
-            levelButtons[levelAkt].addEventListener("click", Wfrage);
+            levelButtons[levelAkt].addEventListener("click", backToKat);
         }
         else {
             console.log("ENDE");
         }
 
         score = 0;
-        level.classList.remove("hide");
+        // level.classList.remove("hide");
+        showForscher();
+        storyWeiter();
+
         Container.classList.add("hide");
 
     }
@@ -270,6 +340,7 @@ function allBlue() {
 
 
 function Wfrage() {
+    showKonto();
     level.classList.add("hide");
     restartButton.classList.add("hide");
     shuffledQuestions = WFragen[levelAkt].sort(() => Math.random() - 0.5);
@@ -347,16 +418,14 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
-    infoButton.innerText = "Tipp";
+    //    infoButton.innerText = "Tipp";
     itBox.innerText = question.tipp;
     currentExpl = question.expl;
     if (question.type == "singleChoice") {
         Container.classList.add("containerW");
         Container.classList.remove("container");
         restartButton.innerText = "Weiter zu den Kategorien."
-        if (levelAkt != 0) {
-            infoButton.classList.remove("hide")
-        }
+
 
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
@@ -403,7 +472,7 @@ function showQuestion(question) {
                         let sizingfactor = 100 / h.height;
                         console.log(sizingfactor)
                         */
-            bild1.height = 150;
+            bild1.height = 300;
             //   bild1.width = bild1.width * sizingfactor;
 
             bild1.style.left = question.koords[i].left;
@@ -496,13 +565,15 @@ function selectAnswerGuess(e) {
 }
 
 function selectAnswer(e) {
-    infoButton.innerText = "i";
-    itBox.innerText = currentExpl;
+
+
+    intro.innerText = currentExpl;
+    storyFortschritt = 99;
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     if (correct) {
-        changeLC(1);
-        console.log("" + score);
+        changeLC(2);
+        punkteNeu += 2;
 
     }
     setStatusClass(document.body, correct);
@@ -510,8 +581,10 @@ function selectAnswer(e) {
         setStatusClass(button, button.dataset.correct);
         button.removeEventListener("click", selectAnswer);
     })
+
     nextButton.classList.remove("hide");
-    infoButton.classList.remove("hide");
+
+    infoButton.classList.add("hide");
 }
 
 function gvChange(e) {

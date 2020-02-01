@@ -7,9 +7,9 @@ export const energieFragenA1 = [
             "./Bilder/Ampel/Energie/Level1/wäscheleine.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Für die Party heute abend hast du noch schnell deine Lieblingsjeans gewaschen, die jetzt möglichst schnell trocknen soll. Was machst du?",
@@ -32,9 +32,9 @@ export const energieFragenA2 = [
             "./Bilder/Ampel/Energie/Level2/dusche.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du möchtest dich waschen, wie tust du dies am effizientesten innerhalb eine Woche?",
@@ -60,9 +60,9 @@ export const energieFragenA3 = [
             "./Bilder/Ampel/Energie/Level3/wasserkocher.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du willst dir Nudeln kochen, dafür brauchst du einen Liter Wasser. Wie erhitzt du diesen am effizientesten?",
@@ -84,9 +84,9 @@ export const energieFragenA4 = [
             "./Bilder/Ampel/Energie/Level4/Der Passende.png"
         ],
         koords: [
-            { bottom: "30%", left: "20%" },
-            { bottom: "30%", left: "45%" },
-            { bottom: "30%", left: "65%" },
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
         ],
         type: "ampel",
         question: "Du möchtest Nudeln kochen. Du kannst einen Topf nehmen, der größer oder kleiner als die Platte ist, oder einen der genauso groß ist. Welcher ist die beste Wahl?",

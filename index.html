@@ -9,7 +9,7 @@
     <script type="module" src="klimaGraph.js"></script>
     <script type="module" defer src="script.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>QuizApp</title>
 </head>
 
@@ -28,12 +28,13 @@
         Dieser Film zeigt eine Demonstration des video-Elements.
         Sie können ihn unter <a href="#">https://www.youtube.com/watch?v=E1ZC0FT8z24&t=1s</a> abrufen.
     </video>
+    <video src="./Video/Video2_1.mp4" controls class="hide" id="Erklaervideo" height="720" width="1280"></video>
     <button id="video-next" class="intro-btn btn hide">></button>
+    <div id="Konto" class="konto-container hide"></div>
 
     <div id="level-container" class="container hide">
-        <div id="Konto" class="konto-container hide">
 
-        </div>
+
         <canvas id="graph" width="1067px" height="673px"></canvas>
 
         <div id="level-grid" class="level-grid ">
@@ -45,8 +46,24 @@
         </div>
     </div>
 
+    <div id="klimaPaket-container" class="klimaPaket-container hide">
+        <div id="klimaPaketText"></div>
+        <div id="klimaPakete" class="klimapakete">
+
+            <div id="textlinks" class="btn-grid4">
+                <l1>-Klimapaket Basis: Ampelergebnis +1, Preis: 2 Bonuspunkte</l1>
+                <l1>-Klimapaket XL: Ampelergebnis +2, Preis: 4 Bonuspunkte</l1>
+            </div>
+            <div id="btnsrechts" class="btn-grid4">
+                <button id="kauf-btn-basis" class="btn-kaufen">KAUFEN</button>
+                <button id="kauf-btn-XL" class="btn-kaufen">KAUFEN</button>
+            </div>
+
+        </div>
+    </div>
+
     <div id="chartContainer" class="containerW hide">
-        <h1 align="center" id="headline">Kategorie</h1>
+        <h1 align="left" id="headline">Wähle eine Kategorie</h1>
         <div class="btn-grid4 ">
             <button id="ErKat" class="btn">Ernährung</button>
             <button id="VerKat" class="btn">Verkehr</button>
@@ -64,7 +81,7 @@
 
     <div id="menu" class="menu-container">
         <div id="menu-buttons" class="menu-grid">
-            <div class="menu" id="menue-schrift">Hauptmenü</div>
+            <img src="/Bilder/pngenvironMate@TUM2.png" alt="Environmate@TUM Logo" width="317px" height="40px">
             <input type="text" id="name-eingabe" placeholder="Vorname">
             <input type="text" id="alter-eingabe" placeholder="Alter">
             <div id="switch-beschreibung">
@@ -83,7 +100,7 @@
 
 
     </div>
-    <div id="container" class="containerW hide">
+    <div id="container" class="containerQ hide">
         <div id="question">Question</div>
         <div id="info/tipp-box" class="it-box hide"></div>
         <div id="answer-buttons" class="btn-grid4">

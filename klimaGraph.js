@@ -70,7 +70,7 @@ for (i = 1; i < 5; i++) {
     }
 }
 
-koordsystem.font = "15px Arial";
+koordsystem.font = "15px Roboto";
 
 for (i = 1; i < 5; i++) {
     koordsystem.textAlign = "end";
