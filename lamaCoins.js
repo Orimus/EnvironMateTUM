@@ -11,8 +11,16 @@ export function showKonto() {
     updateKonto();
 }
 
+export function hideKonto() {
+    Konto.classList.add("hide");
+}
+
 function updateKonto() {
     Konto.innerText = "Punkte: " + coins;
+}
+
+export function getCoins() {
+    return coins;
 }
 
 export function changeLC(aenderung) {

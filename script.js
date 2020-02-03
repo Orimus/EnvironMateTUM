@@ -1,6 +1,6 @@
 import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA, WFragen } from "./fragen.js"
 import { adjustKlimaGraph } from "./klimaGraph.js"
-import { showKonto, changeLC, klimaPaketUebersicht, klimaPaketHide } from "./lamaCoins.js";
+import { showKonto, changeLC, klimaPaketUebersicht, klimaPaketHide, hideKonto, getCoins } from "./lamaCoins.js";
 
 const ErklärVideo = document.getElementById("Erklaervideo");
 const graph = document.getElementById("graph");
@@ -15,6 +15,7 @@ const GVUnterschrift = document.getElementById("GVUnterschrift");
 const GVAusgabe = document.getElementById("GV");
 const GVswitch = document.querySelector("input[name=checkbox]");
 const introContainer = document.getElementById("intro-container");
+const ampelConatiener = document.getElementById("ampelAnzeige");
 const intro = document.getElementById("intro");
 const MenuContainer = document.getElementById("menu");
 const Container = document.getElementById("container");
@@ -31,6 +32,10 @@ const restartButton = document.getElementById("restart-btn");
 const answerButton = document.getElementById("answer-btn");
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const NochmalButton = document.getElementById("nochmalVersuchenBtn");
+const VerlassenButton = document.getElementById("spielVerlassenBtn");
+const klimaBasisButton = document.getElementById("kauf-btn-basis");
+const klimaXLButton = document.getElementById("kauf-btn-XL");
 const storyNextButton = document.getElementById("intro-next");
 const videoNextButton = document.getElementById("video-next");
 const questionContainerElement = document.getElementById("question-container");
@@ -41,6 +46,9 @@ const alterEingabe = document.getElementById("alter-eingabe");
 const EingabeElement = document.getElementById("guess-answer");
 const infoButton = document.getElementById("info");
 const itBox = document.getElementById("info/tipp-box");
+const endScreen = document.getElementById("endScreen");
+const endText = document.getElementById("endText");
+
 
 
 let eingabeName;
@@ -102,12 +110,15 @@ ErnährungButton.addEventListener("click", setFragen);
 KonsumButton.addEventListener("click", setFragen);
 VerkehrButton.addEventListener("click", setFragen);
 EnergieButton.addEventListener("click", setFragen);
+klimaXLButton.addEventListener("click", kaufenXL);
+klimaBasisButton.addEventListener("click", kaufenBasis);
+
 
 
 
 function startGame() {
-    document.body.background = "./Bilder/Windrad.jpg";
-    document.body.backgroundSize = "cover";
+    document.body.background = "./Bilder/pngZeichenfläche 1.png";
+    document.body.style.backgroundSize = "100% 100%";
     eingabeName = nameEingabe.value;
     eingabeAlter = alterEingabe.value;
     MenuContainer.classList.add("hide");
@@ -133,8 +144,10 @@ function startGame() {
 }
 
 function showForscher() {
+
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+
     }
     nextButton.classList.add("hide")
     introContainer.classList.remove("hide");
@@ -184,14 +197,21 @@ function storyWeiter() {
         klimaPaketUebersicht(punkteNeu);
         introContainer.classList.add("hide");
         Container.classList.add("hide");
+        videoNextButton.innerText = "Weiter";
         videoNextButton.classList.remove("hide");
+    }
+    else if (storyFortschritt == 100) {
+        endScreen.classList.remove("hide");
+        level.classList.add("hide");
+        introContainer.classList.add("hide");
+        hideKonto();
     }
     else {
         intro.innerText = storyText[storyFortschritt].text;
         storyFortschritt += 1;
 
     }
-    console.log(nichtErsterLauf)
+
 }
 
 function videoEnde() {
@@ -216,12 +236,36 @@ function videoEnde() {
         videoNextButton.classList.add("hide");
         skipCounter += 1;
         showKonto();
+        let ampel = document.createElement("img");
+        ampel.src = "./Bilder/pngrot.png";
+        ampel.style.height = "100%";
+        ampelConatiener.innerText = "Level " + (levelAkt + 1) + ":";
+        ampelConatiener.appendChild(ampel);
+        ampelConatiener.classList.remove("hide");
     }
     else if (skipCounter == 2) {
         klimaPaketHide();
         hideForscher();
         level.classList.remove("hide");
         videoNextButton.classList.add("hide");
+        if (score > 3) {
+
+            levelButtons[levelAkt - 1].classList.add("correct");
+            adjustKlimaGraph(0.25, "green", levelAkt - 1);
+        }
+        else if (score > 1.5) {
+
+            levelButtons[levelAkt - 1].classList.add("ok");
+            adjustKlimaGraph(0.5, "orange", levelAkt - 1);
+        }
+        else {
+
+            levelButtons[levelAkt - 1].classList.add("wrong");
+            adjustKlimaGraph(2.5, "red", levelAkt - 1);
+        }
+
+        score = 0;
+        //levelAkt += 1;
     }
 
 
@@ -235,7 +279,7 @@ function setFragen(e) {
     if (Kat == "Er") {
 
         shuffledQuestions = ernaehrungFragenA[levelAkt].sort(() => Math.random() - 0.5);
-        console.log("juhu");
+
         ErnährungButton.classList.remove("btn");
         ErnährungButton.classList.add("btn-grau");
         ErnährungButton.removeEventListener("click", setFragen);
@@ -271,6 +315,7 @@ function setFragen(e) {
 function backToKat() {
     punkteNeu = 0;
     if (anzKatDone < 4) {
+        level.classList.add("hide");
         restartButton.classList.add("hide");
         chartConatiner.classList.remove("hide");
         Container.classList.add("hide");
@@ -280,18 +325,15 @@ function backToKat() {
         anzKatDone = 0;
         if (score > 2.5) {
             storyFortschritt = 9;
-            levelButtons[levelAkt].classList.add("correct");
-            adjustKlimaGraph(0.25, "green", levelAkt);
+
         }
         else if (score > 1.5) {
             storyFortschritt = 6;
-            levelButtons[levelAkt].classList.add("ok");
-            adjustKlimaGraph(0.5, "orange", levelAkt);
+
         }
         else {
             storyFortschritt = 4;
-            levelButtons[levelAkt].classList.add("wrong");
-            adjustKlimaGraph(1, "red", levelAkt);
+
         }
         levelButtons[levelAkt].removeEventListener("click", backToKat);
         levelButtons[levelAkt].classList.add("btn-grau");
@@ -308,7 +350,7 @@ function backToKat() {
             console.log("ENDE");
         }
 
-        score = 0;
+
         // level.classList.remove("hide");
         showForscher();
         storyWeiter();
@@ -343,7 +385,7 @@ function Wfrage() {
     showKonto();
     level.classList.add("hide");
     restartButton.classList.add("hide");
-    shuffledQuestions = WFragen[levelAkt].sort(() => Math.random() - 0.5);
+    shuffledQuestions = WFragen[levelAkt - 1].sort(() => Math.random() - 0.5);
     Container.classList.remove("hide");
     // infoButton.classList.remove("hide");
 
@@ -351,6 +393,39 @@ function Wfrage() {
     questionContainerElement.classList.add("hide");
     currentIndex = 0;
     setNextQuestion();
+}
+
+function kaufenBasis() {
+    let coins = getCoins();
+    if (coins < 2) {
+
+    }
+    else if (score > 3) {
+
+    }
+    else {
+        changeLC(-2);
+        if (score <= 1.5) {
+            score = 2;
+        }
+        else {
+            score = 4;
+        }
+    }
+}
+
+function kaufenXL() {
+    let coins = getCoins();
+    if (coins < 4) {
+
+    }
+    else if (score > 3) {
+
+    }
+    else {
+        changeLC(-4);
+        score += 3.5;
+    }
 }
 
 function levelUebersicht() {
@@ -429,7 +504,7 @@ function showQuestion(question) {
 
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
-            console.log(answer.text)
+
             const button = document.createElement("button");
             button.innerText = answer.text;
             button.classList.add("btn");
@@ -455,7 +530,7 @@ function showQuestion(question) {
         Container.classList.remove("containerW");
         Container.classList.add("container");
         questionContainerElement.style.backgroundImage = "url('" + question.hintergrund + "')";
-        questionContainerElement.style.backgroundSize = "100% 100%";
+        questionContainerElement.style.backgroundSize = "100%, 100%";
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
 
@@ -517,7 +592,7 @@ function selectAnswerAmpel(e) {
     itBox.style.backgroundColor = "hsl(0, 100%, 50%)"
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
-    console.log(correct);
+
     if (correct == "correct") {
         score += 1;
         itBox.style.backgroundColor = "hsl(145, 100%, 50%)"
@@ -544,7 +619,7 @@ function selectAnswerGuess(e) {
     const eingabe = EingabeElement.value;
     if (eingabe >= 0.9 * currentGuessAnswer && eingabe <= 1.1 * currentGuessAnswer) {
         score += 1;
-        console.log("" + score);
+
         updateScore();
         setStatusClass(document.body, true);
         questionElement.innerText = eingabe + " ist richtig (gültiger Lösungsbereich " + Math.round(0.9 * currentGuessAnswer) + " - " + Math.round(1.1 * currentGuessAnswer) + ")";
@@ -556,7 +631,7 @@ function selectAnswerGuess(e) {
 
     }
     EingabeElement.classList.add("hide");
-    console.log(eingabe + "eingabe");
+
     answerButton.classList.add("hide");
     nextButton.classList.remove("hide");
     infoButton.classList.remove("hide");
@@ -600,6 +675,7 @@ function gvChange(e) {
 
 
 
+
 function setStatusClass(item, status) {
     clearStatusClass(item);
     if (status) {
@@ -633,4 +709,28 @@ function resetState() {
     clearStatusClass(document.body);
 
 
+
+
 }
+
+export function gameOver() {
+
+
+    showForscher();
+    storyFortschritt = 100;
+    intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten. "
+    endText.innerText = "mmmmmmmmmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmm mmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmm mmmmmmmmmmmmm m m m m m m m m"
+    //videoNextButton.classList.remove("hide");
+
+    levelButtons[levelAkt].removeEventListener("click", backToKat);
+    levelButtons[levelAkt].classList.add("btn-grau");
+    levelButtons[levelAkt].classList.remove("btn");
+
+
+
+}
+
+function loadEndscreen() {
+
+}
+

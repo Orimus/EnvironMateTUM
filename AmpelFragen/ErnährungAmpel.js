@@ -99,11 +99,11 @@ export const ernaehrungFragenA4 = [
 
 export const ernaehrungFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level5/Hintergrund_Frühstück.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level5/heizung.png",
-            "./Bilder/Ampel/Ernährung/Level5/wäschetrockner.png",
-            "./Bilder/Ampel/Ernährung/Level5/wäscheleine.png"
+            "./Bilder/Ampel/Ernährung/Level5/vegan.png",
+            "./Bilder/Ampel/Ernährung/Level5/traditionell.png",
+            "./Bilder/Ampel/Ernährung/Level5/veggie.png"
         ],
         koords: [
             { bottom: "30%", left: "15%" },

@@ -81,7 +81,7 @@ export const energieFragenA4 = [
         items: [
             "./Bilder/Ampel/Energie/Level4/Groß.png",
             "./Bilder/Ampel/Energie/Level4/Klein.png",
-            "./Bilder/Ampel/Energie/Level4/Der Passende.png"
+            "./Bilder/Ampel/Energie/Level4/Passend.png"
         ],
         koords: [
             { bottom: "30%", left: "15%" },
@@ -100,6 +100,28 @@ export const energieFragenA4 = [
 ]
 
 export const energieFragenA5 = [
+    {
+        hintergrund: "./Bilder/Ampel/Energie/Level3/küche.png",
+        items: [
+            "./Bilder/Ampel/Energie/Level4/Groß.png",
+            "./Bilder/Ampel/Energie/Level4/Klein.png",
+            "./Bilder/Ampel/Energie/Level4/Passend.png"
+        ],
+        koords: [
+            { bottom: "30%", left: "15%" },
+            { bottom: "30%", left: "35%" },
+            { bottom: "30%", left: "55%" },
+        ],
+        type: "ampel",
+        question: "Du möchtest dir über einen Streaming-Dienst (z.B. Netflix, AmazonPrime, etc.)  eine Serie anschauen. Wie hältst du den Energieverbrauch möglichst gering?",
+        answers:[
+            {text: "Wenn man über das Tablet oder den Laptop streamt, anstatt über den großen Fernseher, verbraucht man nur ein Zehntel des Stroms.", correct: "ok"},
+            {text: "Statt einen Film zu streamen, kaufe ich lieber eine DVD.", correct: "wrong"},
+            {text: "Ich streame nicht jeden Tag, reduziere die Auflösung von Videos, höre Musik anstatt mir Musik-Videos anzuschauen und reduziere damit den Energieverbrauch.", correct: "correct"}
+            ],
+        expl: "Das Streamen am Laptop oder Tablet kann im Vergleich zum Streamen auf einem Fernseher bis zu 20 kg CO2 im Jahr einsparen. Wenn man sich die DVD per Post schicken lässt, braucht sie in etwa gleich viel Energie wie Streaming, außerdem werden Rohstoffe für die Herstellung benötigt. Also gilt: Insgesamt weniger streamen und den Energieverbrauch durch geringere Auflösung reduzieren. Nicht vergessen: Geräte ausschalten! Der Stand-by Modus verbraucht sehr viel Energie.  Quelle: www.jetzt.de und www.utopia.de"
+    },
+    
     
 ]
     /*
