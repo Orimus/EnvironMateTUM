@@ -32,52 +32,61 @@ let koordWerte = [{ a: "m", x: 40, y: 30 }, { a: "l", x: 40, y: maxY }, { a: "l"
 
 
 let koordsystem = graph.getContext("2d");
+
 koordsystem.strokeStyle = "black";
 console.log("koordsystem")
 let i = 0
 
-koordsystem.lineWidth = 1.5;
-for (i = 0; i < koordWerte.length; i++) {
-    if (koordWerte[i].a == "l") {
-        koordsystem.lineTo(koordWerte[i].x, koordWerte[i].y)
+drawKlimaGraph();
+
+function drawKlimaGraph() {
+    koordsystem.strokeStyle = "black";
+    i = 0;
+
+    koordsystem.lineWidth = 1.5;
+    for (i = 0; i < koordWerte.length; i++) {
+        if (koordWerte[i].a == "l") {
+            koordsystem.lineTo(koordWerte[i].x, koordWerte[i].y)
+        }
+        else {
+            koordsystem.moveTo(koordWerte[i].x, koordWerte[i].y)
+        }
     }
-    else {
-        koordsystem.moveTo(koordWerte[i].x, koordWerte[i].y)
+
+
+    koordsystem.stroke();
+
+
+
+    for (i = 1; i < 5; i++) {
+        if (i == 4) {
+            koordsystem.setLineDash([])
+            koordsystem.beginPath();
+            koordsystem.moveTo(40, maxY - tempDist * i);
+            koordsystem.lineTo(maxX, maxY - tempDist * i);
+            koordsystem.strokeStyle = "red";
+            koordsystem.stroke();
+        }
+        else {
+            koordsystem.setLineDash([5, 15]);
+            koordsystem.beginPath();
+            koordsystem.moveTo(40, maxY - tempDist * i);
+            koordsystem.lineTo(maxX, maxY - tempDist * i);
+            koordsystem.stroke();
+        }
     }
-}
 
+    koordsystem.font = "15px Roboto";
 
-koordsystem.stroke();
-
-
-
-for (i = 1; i < 5; i++) {
-    if (i == 4) {
-        koordsystem.setLineDash([])
-        koordsystem.beginPath();
-        koordsystem.moveTo(40, maxY - tempDist * i);
-        koordsystem.lineTo(maxX, maxY - tempDist * i);
-        koordsystem.strokeStyle = "red";
-        koordsystem.stroke();
+    for (i = 1; i < 5; i++) {
+        koordsystem.textAlign = "end";
+        koordsystem.fillText(i * 0.5 + "℃", 38, maxY + 7.5 - i * tempDist)
     }
-    else {
-        koordsystem.setLineDash([5, 15]);
-        koordsystem.beginPath();
-        koordsystem.moveTo(40, maxY - tempDist * i);
-        koordsystem.lineTo(maxX, maxY - tempDist * i);
-        koordsystem.stroke();
+    for (i = 0; i < 6; i++) {
+        koordsystem.textAlign = "center";
+        koordsystem.fillText((2020 + i * 6) + "", 40 + i * levelDist, maxY + 15)
     }
-}
 
-koordsystem.font = "15px Roboto";
-
-for (i = 1; i < 5; i++) {
-    koordsystem.textAlign = "end";
-    koordsystem.fillText(i * 0.5 + "℃", 38, maxY + 7.5 - i * tempDist)
-}
-for (i = 0; i < 6; i++) {
-    koordsystem.textAlign = "center";
-    koordsystem.fillText((2020 + i * 6) + "", 40 + i * levelDist, maxY + 15)
 }
 
 export function adjustKlimaGraph(tempPlus, color, level) {
@@ -100,6 +109,12 @@ export function adjustKlimaGraph(tempPlus, color, level) {
 
 }
 
+export function resetGraph() {
+    Y = maxY;
+    koordsystem.clearRect(0, 0, maxX, maxY);
+    drawKlimaGraph();
+}
+
 function klimaGraphSmall() {
 
 }
@@ -109,6 +124,8 @@ function klimaGraphResize() {
     sizingfaktor = 1067 / window.document.body.clientWidth;
     console.log(sizingfaktor)
     // graph
+
+
 }
 
 

@@ -1,16 +1,16 @@
 export const ernaehrungFragenA1 = [
 
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Hintergrund_Äpfel.svg",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level1/lvl1background.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level1/apfel_biobayern.png",
             "./Bilder/Ampel/Ernährung/Level1/apfel_bioitalien.png",
             "./Bilder/Ampel/Ernährung/Level1/apfel_neuseeland.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Du willst dir in der Pause am Kiosk Obst kaufen. Du kaufst …",
@@ -26,16 +26,16 @@ export const ernaehrungFragenA1 = [
 
 export const ernaehrungFragenA2 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level2/lvl2background.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level2/flasche3.png",
             "./Bilder/Ampel/Ernährung/Level2/flasche2.png",
             "./Bilder/Ampel/Ernährung/Level2/flasche1.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Du möchtest dir etwas zu Trinken kaufen. Du kaufst …",
@@ -50,16 +50,16 @@ export const ernaehrungFragenA2 = [
 
 export const ernaehrungFragenA3 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level3/lvl3background.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level3/pommes.png",
             "./Bilder/Ampel/Ernährung/Level3/käsesemmel.png",
             "./Bilder/Ampel/Ernährung/Level3/beef-1239198_1920.jpg"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "In der großen Pause hast du richtig Hunger. Du kaufst …",
@@ -74,16 +74,16 @@ export const ernaehrungFragenA3 = [
 
 export const ernaehrungFragenA4 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level4/lvl4background.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level4/milch1.png",
             "./Bilder/Ampel/Ernährung/Level4/hafermilch2.png",
             "./Bilder/Ampel/Ernährung/Level4/sojamlich.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Beim Bäcker willst du dir in der Pause eine heiße Schokolade kaufen. Zum Glück hat dein Bäcker mehrere Alternativen: ",
@@ -99,16 +99,16 @@ export const ernaehrungFragenA4 = [
 
 export const ernaehrungFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level5/Hintergrund_Frühstück.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level5/lvl5background.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level5/vegan.png",
             "./Bilder/Ampel/Ernährung/Level5/traditionell.png",
             "./Bilder/Ampel/Ernährung/Level5/veggie.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Du kaufst für das Wochenendfrühstück ein. Du entscheidest dich für … ",

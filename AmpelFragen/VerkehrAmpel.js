@@ -7,9 +7,9 @@ export const VerkehrFragenA1 = [
             "./Bilder/Ampel/Verkehr/Level1/First.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Du möchtest in den Urlaub fliegen. Es gibt verschiedene Buchungsklassen, doch welche ist in Bezug auf deine CO2-Bilanz wohl die Beste?",
@@ -31,9 +31,9 @@ export const VerkehrFragenA2 = [
             "./Bilder/Ampel/Verkehr/Level2/Flugzeug.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Euer Sommerurlaub soll an das Mittelmeer gehen (ca. 1500 km). Dafür könntet ihr fliegen, mit dem Auto fahren oder den Zug nehmen. Aber: Was ist denn auf der Langstrecke die beste Wahl?",
@@ -55,9 +55,9 @@ export const VerkehrFragenA3 = [
             "./Bilder/Ampel/Verkehr/Level3/Auto.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Für deinen Weg zur Schule gibt es mehrere Optionen. Welche wählst du?",
@@ -79,9 +79,9 @@ export const VerkehrFragenA4 = [
             "./Bilder/Ampel/Verkehr/Level4/Sportwagen.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Deine Eltern wollen sich ein neues Auto kaufen. Welches hat wohl die beste Klimabilanz?",
@@ -103,9 +103,9 @@ export const VerkehrFragenA5 = [
             "./Bilder/Ampel/Verkehr/Level5/Sportwagen.png"
         ],
         koords: [
-            { bottom: "30%", left: "15%" },
-            { bottom: "30%", left: "35%" },
-            { bottom: "30%", left: "55%" },
+            { bottom: "35%", left: "5%" },
+            { bottom: "35%", left: "35%" },
+            { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
         question: "Deine Eltern wollen sich ein neues Auto kaufen, das möglichst groß ist. Welches hat wohl die beste Klimabilanz??",

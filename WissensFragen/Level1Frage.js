@@ -6,7 +6,7 @@ export const WQuestionsL1 = [{
         { text: "...mehr Artenvielfalt", correct: false },
         { text: "...dem Abschmelzen der Polkappen", correct: true },
     ],
-    expl: "Das solltest du aus dem Erklärvideo von Beginn noch wissen."
+    expl: "...dem Abschmelzen der Polkappen"
 },
 
 ]

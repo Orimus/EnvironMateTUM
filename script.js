@@ -1,5 +1,5 @@
 import { ernaehrungFragenA, konsumFragenA, energieFragenA, VerkehrFragenA, WFragen } from "./fragen.js"
-import { adjustKlimaGraph } from "./klimaGraph.js"
+import { adjustKlimaGraph, resetGraph } from "./klimaGraph.js"
 import { showKonto, changeLC, klimaPaketUebersicht, klimaPaketHide, hideKonto, getCoins } from "./lamaCoins.js";
 
 const ErklärVideo = document.getElementById("Erklaervideo");
@@ -65,6 +65,8 @@ let skipCounter = 0;
 let videoWarNichtDa = true
 let nichtErsterLauf = false;
 let punkteNeu = 0;
+let gradErwärmung = 0;
+let gameO = false
 
 
 
@@ -112,6 +114,8 @@ VerkehrButton.addEventListener("click", setFragen);
 EnergieButton.addEventListener("click", setFragen);
 klimaXLButton.addEventListener("click", kaufenXL);
 klimaBasisButton.addEventListener("click", kaufenBasis);
+NochmalButton.addEventListener("click", retry);
+VerlassenButton.addEventListener("click", leave)
 
 
 
@@ -149,6 +153,11 @@ function showForscher() {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
 
     }
+
+    Container.classList.remove("containerW")
+    Container.classList.remove("containerBlank")
+    Container.classList.add("container-max-H10")
+
     nextButton.classList.add("hide")
     introContainer.classList.remove("hide");
     forscherM.classList.remove("hide");
@@ -201,6 +210,7 @@ function storyWeiter() {
         videoNextButton.classList.remove("hide");
     }
     else if (storyFortschritt == 100) {
+        ampelConatiener.classList.add("hide")
         endScreen.classList.remove("hide");
         level.classList.add("hide");
         introContainer.classList.add("hide");
@@ -245,27 +255,38 @@ function videoEnde() {
     }
     else if (skipCounter == 2) {
         klimaPaketHide();
+        videoNextButton.classList.add("hide");
+
+
         hideForscher();
         level.classList.remove("hide");
-        videoNextButton.classList.add("hide");
+
         if (score > 3) {
 
             levelButtons[levelAkt - 1].classList.add("correct");
             adjustKlimaGraph(0.25, "green", levelAkt - 1);
+            gradErwärmung += 0.25;
         }
         else if (score > 1.5) {
 
             levelButtons[levelAkt - 1].classList.add("ok");
             adjustKlimaGraph(0.5, "orange", levelAkt - 1);
+            gradErwärmung += 0.5;
         }
         else {
 
             levelButtons[levelAkt - 1].classList.add("wrong");
             adjustKlimaGraph(2.5, "red", levelAkt - 1);
+            gradErwärmung += 2.5;
         }
 
         score = 0;
+
+        if (gameO) {
+            gameOver();
+        }
         //levelAkt += 1;
+
     }
 
 
@@ -313,6 +334,8 @@ function setFragen(e) {
 }
 
 function backToKat() {
+    document.body.style.backgroundImage = "url('./Bilder/pngZeichenfläche 1.png')";
+
     punkteNeu = 0;
     if (anzKatDone < 4) {
         level.classList.add("hide");
@@ -323,7 +346,7 @@ function backToKat() {
     }
     else {
         anzKatDone = 0;
-        if (score > 2.5) {
+        if (score > 3) {
             storyFortschritt = 9;
 
         }
@@ -341,21 +364,29 @@ function backToKat() {
         allBlue();
         levelAkt += 1;
 
-        if (levelAkt < 5) {
+        if (levelAkt < 3) {
             levelButtons[levelAkt].classList.remove("btn-grau");
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", backToKat);
+            questionContainerElement.classList.add("hide")
+            Container.classList.add("hide")
+            showForscher();
+            storyWeiter();
         }
         else {
+            gameO = true;
+            Wfrage();
+            // gameOver();
             console.log("ENDE");
         }
 
 
-        // level.classList.remove("hide");
-        showForscher();
-        storyWeiter();
 
-        Container.classList.add("hide");
+
+        // level.classList.remove("hide");
+
+
+
 
     }
 }
@@ -496,7 +527,10 @@ function showQuestion(question) {
     //    infoButton.innerText = "Tipp";
     itBox.innerText = question.tipp;
     currentExpl = question.expl;
+    Container.classList.remove("containerQ");
     if (question.type == "singleChoice") {
+        Container.classList.remove("containerBlank")
+        console.log(Container.classList)
         Container.classList.add("containerW");
         Container.classList.remove("container");
         restartButton.innerText = "Weiter zu den Kategorien."
@@ -528,9 +562,9 @@ function showQuestion(question) {
         questionContainerElement.classList.remove("hide");
         answerButtonsElement.classList.add("hide");
         Container.classList.remove("containerW");
-        Container.classList.add("container");
-        questionContainerElement.style.backgroundImage = "url('" + question.hintergrund + "')";
-        questionContainerElement.style.backgroundSize = "100%, 100%";
+        Container.classList.add("containerBlank");
+        document.body.style.backgroundImage = "url('" + question.hintergrund + "')";
+        document.body.style.backgroundSize = "100% 100%";
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
 
@@ -547,7 +581,7 @@ function showQuestion(question) {
                         let sizingfactor = 100 / h.height;
                         console.log(sizingfactor)
                         */
-            bild1.height = 300;
+            bild1.height = 275;
             //   bild1.width = bild1.width * sizingfactor;
 
             bild1.style.left = question.koords[i].left;
@@ -565,6 +599,7 @@ function showQuestion(question) {
             button.addEventListener("click", selectAnswerAmpel);
             answerButtonsElement.appendChild(button);
             */
+
             questionContainerElement.appendChild(bild1);
         })
     }
@@ -714,20 +749,65 @@ function resetState() {
 }
 
 export function gameOver() {
-
-
-    showForscher();
+    let JahrAkt = 2020 + 6 * levelAkt;
+    let alterAkt = JahrAkt - 2020 + parseInt(eingabeAlter);
     storyFortschritt = 100;
-    intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten. "
-    endText.innerText = "mmmmmmmmmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmm mmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmm mmmmmmmmmmmmm m m m m m m m m"
-    //videoNextButton.classList.remove("hide");
-
-    levelButtons[levelAkt].removeEventListener("click", backToKat);
-    levelButtons[levelAkt].classList.add("btn-grau");
-    levelButtons[levelAkt].classList.remove("btn");
+    showForscher();
+    if (levelAkt < 3) {
 
 
+        intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten "
+        endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        //videoNextButton.classList.remove("hide");
 
+        levelButtons[levelAkt].removeEventListener("click", backToKat);
+        levelButtons[levelAkt].classList.add("btn-grau");
+        levelButtons[levelAkt].classList.remove("btn");
+    }
+    else {
+        level.classList.remove("hide")
+        if (gradErwärmung < 1.5) {
+            intro.innerText = "Sehr gut, du bist ein echter Klimaprofi. "
+            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        }
+        else if (gradErwärmung < 2) {
+            intro.innerText = "Mit deiner Hlfe ist es uns glungen die Klimaerwärmung in Grenzen zu halten. "
+            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        }
+        else {
+            intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten "
+            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        }
+    }
+
+
+
+}
+
+function retry() {
+    hideForscher();
+    resetGraph();
+    endScreen.classList.add("hide");
+    MenuContainer.classList.remove("hide");
+    startButton.classList.remove("hide");
+
+    anzKatDone = 0;
+    score = 0;
+    storyFortschritt = 0;
+    levelAkt = 0;
+    skipCounter = 0;
+    videoWarNichtDa = true
+    nichtErsterLauf = false;
+    punkteNeu = 0;
+    gradErwärmung = 0;
+    gameO = false
+
+
+
+}
+
+function leave() {
+    console.log("Credits")
 }
 
 function loadEndscreen() {
