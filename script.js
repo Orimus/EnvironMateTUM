@@ -83,7 +83,7 @@ const levelButtons = [
 
 const storyText = [
 /*0*/    { text: "Hallo " },
-    { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2050 in Grenzen zu halten" },
+    { text: ",\n \n uns läuft die Zeit davon! Du musst uns helfen die globale Erderwärmung bis zum Jahr 2050 in Grenzen zu halten." },
     { text: "Dafür ist es am wichtigsten, den CO₂-Ausstoß der Bürger zu senken." },
     { text: "Aber was bedeutet das überhaupt?" },
 /*4*/    { text: "Leider hast du dich im Durchschnitt für die klimaschädlichsten Optionen entschieden. Das kannst du besser, " },
@@ -766,17 +766,21 @@ export function gameOver() {
     }
     else {
         level.classList.remove("hide")
-        if (gradErwärmung < 1.5) {
-            intro.innerText = "Sehr gut, du bist ein echter Klimaprofi. "
-            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        if (gradErwärmung < 1) {
+            intro.innerText = "Sehr gut, du bist ein echter Klimaprofi, " + eingabeName + "."
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt. \n Selbst wenn du es geschafft hast, dass die Erde sich fast nicht erwärmt hat: \n Seit 1850 ist die Temperatur um über 1 Grad gestiegen. \n Der Nordpol wird im Sommer komplett abschmelzen und nur im Winter mit Eis bedeckt sein. \n Durch das abgeschmolzene Eis ist der Meeresspiegel gestiegen, und hat einige Küstenstädte überflutet. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html";
+        }
+        else if (gradErwärmung < 1.5) {
+            intro.innerText = "Das war schon ganz gut, aber es gibt noch Luft nach oben, " + eingabeName +  + "."
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + " und diese Folgen sind bereits zu spüren: \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
         }
         else if (gradErwärmung < 2) {
-            intro.innerText = "Mit deiner Hlfe ist es uns glungen die Klimaerwärmung in Grenzen zu halten. "
-            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+            intro.innerText = "Mit deiner Hlfe ist es uns gelungen die Klimaerwärmung in Grenzen zu halten, " + eingabeName +  + "."
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
         }
         else {
-            intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten "
-            endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+            intro.innerText = eingabeName + ", Du hast es leider nicht geschafft die Erde zu retten. "
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
         }
     }
 
