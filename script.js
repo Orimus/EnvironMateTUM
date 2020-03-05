@@ -68,6 +68,7 @@ let punkteNeu = 0;
 let gradErwärmung = 0;
 let gameO = false;
 let ampel = document.createElement("img");
+let restart = false;
 
 
 
@@ -179,16 +180,24 @@ function storyWeiter() {
         videoNextButton.addEventListener("click", videoEnde);
         setTimeout(function () { videoNextButton.classList.remove("hide") }, 3);
         hideForscher();
-        if (GVswitch.checked) {
-            klimaVideoSub.classList.remove("hide");
-            klimaVideoSub.play();
+        if (restart) {
+            skipCounter = 1;
+            videoEnde();
+            setTimeout(function () { videoNextButton.classList.add("hide") }, 4);
         }
         else {
-            klimaVideo.classList.remove("hide");
-            klimaVideo.play();
-            //setNextQuestion();
-            //Container.classList.remove("hide");
-            //questionContainerElement.classList.remove("hide");
+            if (GVswitch.checked) {
+                klimaVideoSub.classList.remove("hide");
+                klimaVideoSub.play();
+
+            }
+            else {
+                klimaVideo.classList.remove("hide");
+                klimaVideo.play();
+                //setNextQuestion();
+                //Container.classList.remove("hide");
+                //questionContainerElement.classList.remove("hide");
+            }
         }
     }
     else if ((storyFortschritt == 6 || storyFortschritt == 9 || storyFortschritt == 12) && nichtErsterLauf) {
@@ -815,12 +824,7 @@ export function gameOver() {
 }
 
 function retry() {
-    hideForscher();
-    resetGraph();
-    endScreen.classList.add("hide");
-    MenuContainer.classList.remove("hide");
-    startButton.classList.remove("hide");
-
+    restart = true;
     anzKatDone = 0;
     score = 0;
     storyFortschritt = 0;
@@ -831,6 +835,27 @@ function retry() {
     punkteNeu = 0;
     gradErwärmung = 0;
     gameO = false
+    changeLC(- getCoins());
+
+    ampel.src = "./Bilder/pngrot.png";
+    ampelConatiener.innerText = "Level " + (levelAkt + 1) + ":";
+    ampelConatiener.appendChild(ampel);
+
+
+
+    hideForscher();
+    resetGraph();
+    endScreen.classList.add("hide");
+    showForscher();
+
+
+
+    intro.innerText = storyText[0].text + eingabeName + storyText[1].text;
+    storyFortschritt += 2;
+
+    currentIndex = 0;
+
+
 
 
 
