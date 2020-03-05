@@ -66,7 +66,8 @@ let videoWarNichtDa = true
 let nichtErsterLauf = false;
 let punkteNeu = 0;
 let gradErwärmung = 0;
-let gameO = false
+let gameO = false;
+let ampel = document.createElement("img");
 
 
 
@@ -121,6 +122,7 @@ VerlassenButton.addEventListener("click", leave)
 
 
 function startGame() {
+    // window.print();
     document.body.background = "./Bilder/pngZeichenfläche 1.png";
     document.body.style.backgroundSize = "100% 100%";
     eingabeName = nameEingabe.value;
@@ -179,9 +181,11 @@ function storyWeiter() {
         hideForscher();
         if (GVswitch.checked) {
             klimaVideoSub.classList.remove("hide");
+            klimaVideoSub.play();
         }
         else {
             klimaVideo.classList.remove("hide");
+            klimaVideo.play();
             //setNextQuestion();
             //Container.classList.remove("hide");
             //questionContainerElement.classList.remove("hide");
@@ -236,6 +240,7 @@ function videoEnde() {
         }
         videoNextButton.classList.add("hide");
         ErklärVideo.classList.remove("hide");
+        ErklärVideo.play();
         setTimeout(function () { videoNextButton.classList.remove("hide") }, 3);
         skipCounter += 1;
     }
@@ -246,7 +251,7 @@ function videoEnde() {
         videoNextButton.classList.add("hide");
         skipCounter += 1;
         showKonto();
-        let ampel = document.createElement("img");
+
         ampel.src = "./Bilder/pngrot.png";
         ampel.style.height = "100%";
         ampelConatiener.innerText = "Level " + (levelAkt + 1) + ":";
@@ -337,6 +342,11 @@ function backToKat() {
     document.body.style.backgroundImage = "url('./Bilder/pngZeichenfläche 1.png')";
 
     punkteNeu = 0;
+    if (anzKatDone == 0) {
+        ampel.src = "./Bilder/pngrot.png";
+        ampelConatiener.innerText = "Level " + (levelAkt + 1) + ":";
+        ampelConatiener.appendChild(ampel);
+    }
     if (anzKatDone < 4) {
         level.classList.add("hide");
         restartButton.classList.add("hide");
@@ -363,6 +373,7 @@ function backToKat() {
         levelButtons[levelAkt].classList.remove("btn");
         allBlue();
         levelAkt += 1;
+
 
         if (levelAkt < 3) {
             levelButtons[levelAkt].classList.remove("btn-grau");
@@ -624,20 +635,20 @@ function selectAnswerAmpel(e) {
     itBox.innerText = currentExpl;
     itBox.classList.remove("hide");
 
-    itBox.style.backgroundColor = "hsl(0, 100%, 50%)"
+    itBox.style.backgroundColor = "hsl(0, 100%, 38%)"
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
 
     if (correct == "correct") {
         score += 1;
-        itBox.style.backgroundColor = "hsl(145, 100%, 50%)"
+        itBox.style.backgroundColor = "hsl(164, 100%, 20%)"
 
     }
     else if (correct == "ok") {
         score += 0.5;
-        itBox.style.backgroundColor = " hsl(55, 100%, 50%)";
+        itBox.style.backgroundColor = " hsl(45, 100%, 50%)";
     }
-
+    updateAmpel();
     document.body.classList.add(correct);
     Array.from(questionContainerElement.children).forEach(input => {
         //input.classList.add(button.dataset.correct);
@@ -648,6 +659,21 @@ function selectAnswerAmpel(e) {
     restartButton.classList.remove("hide");
     infoButton.innerText = "i";
     infoButton.classList.remove("hide");
+}
+
+function updateAmpel() {
+    let scoreRelativ = score / anzKatDone;
+    console.log(scoreRelativ)
+    if (scoreRelativ >= 0.875) {
+        ampel.src = "./Bilder/pnggrün.png";
+        ampel.style.height = "100%";
+    }
+    else if (scoreRelativ >= 0.5) {
+        ampel.src = "./Bilder/pnggelb.png";
+    }
+    else {
+        ampel.src = "./Bilder/pngrot.png";
+    }
 }
 
 function selectAnswerGuess(e) {
@@ -682,8 +708,8 @@ function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     if (correct) {
-        changeLC(2);
-        punkteNeu += 2;
+        changeLC(1);
+        punkteNeu += 1;
 
     }
     setStatusClass(document.body, correct);
@@ -771,11 +797,11 @@ export function gameOver() {
             endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt. \n Selbst wenn du es geschafft hast, dass die Erde sich fast nicht erwärmt hat: \n Seit 1850 ist die Temperatur um über 1 Grad gestiegen. \n Der Nordpol wird im Sommer komplett abschmelzen und nur im Winter mit Eis bedeckt sein. \n Durch das abgeschmolzene Eis ist der Meeresspiegel gestiegen, und hat einige Küstenstädte überflutet. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html";
         }
         else if (gradErwärmung < 1.5) {
-            intro.innerText = "Das war schon ganz gut, aber es gibt noch Luft nach oben, " + eingabeName +  + "."
+            intro.innerText = "Das war schon ganz gut, aber es gibt noch Luft nach oben, " + eingabeName + + "."
             endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + " und diese Folgen sind bereits zu spüren: \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
         }
         else if (gradErwärmung < 2) {
-            intro.innerText = "Mit deiner Hlfe ist es uns gelungen die Klimaerwärmung in Grenzen zu halten, " + eingabeName +  + "."
+            intro.innerText = "Mit deiner Hlfe ist es uns gelungen die Klimaerwärmung in Grenzen zu halten, " + eingabeName + + "."
             endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
         }
         else {

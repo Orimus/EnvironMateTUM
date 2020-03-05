@@ -304,21 +304,24 @@ background-color: white;}
 }
 
 .btn.correct{
-    --hue: var(--hue-correct);
+    border: 1px solid hsl(164, 100%, 13%);
+    background-color: hsl(164, 100%, 20%);
 }
 
 .btn.wrong{
-    --hue: var(--hue-wrong);
+    border: 1px solid hsl(0, 100%, 30%);
+    background-color: hsl(0, 100%, 38%);
 }
 
 .btn.ok{
-    --hue: var(--hue-ok)
+    border: 1px solid hsl(45, 100%, 38%);
+    background-color: hsl(45, 100%, 50%);
 }
 
 .btn-gr{
     
-        border: 1px solid  hsl(145, 100%, 20%);
-        background-color: hsl(145, 100%, 30%);
+    border: 1px solid hsl(164, 100%, 13%);
+    background-color: hsl(164, 100%, 20%);
         border-radius: 1px;
         padding: 5px 10px;
         color: white;
@@ -329,12 +332,12 @@ background-color: white;}
 
 .btn-gr:hover{
     color: black;
-    background-color: hsl(145, 100%, 40%);
+    background-color: hsl(164, 100%, 30%);
 }
 
 .btn-ora{
-    border: 1px solid  hsl(45, 100%, 30%);
-        background-color: hsl(45, 100%, 40%);
+    border: 1px solid  hsl(32, 100%, 30%);
+        background-color: hsl(32, 100%, 40%);
         border-radius: 1px;
         padding: 5px 10px;
         color: white;
@@ -343,22 +346,22 @@ background-color: white;}
 
 .btn-ora:hover{
     color: black;
-    background-color: hsl(45, 100%, 50%);
+    background-color: hsl(32, 100%, 50%);
 }
 
 .btn-grau.correct{
-    border: 1px solid hsl(145, 100%, 30%);
-    background-color: hsl(145, 100%, 50%);
+    border: 1px solid hsl(164, 100%, 13%);
+    background-color: hsl(164, 100%, 20%);
 }
 
 .btn-grau.wrong{
     border: 1px solid hsl(0, 100%, 30%);
-    background-color: hsl(0, 100%, 50%);
+    background-color: hsl(0, 100%, 38%);
 }
 
 .btn-grau.ok{
-    border: 1px solid hsl(55, 100%, 30%);
-    background-color: hsl(55, 100%, 50%);
+    border: 1px solid hsl(45, 100%, 38%);
+    background-color: hsl(45, 100%, 50%);
 }
 
 .btn-grau{
@@ -385,8 +388,8 @@ background-color: white;}
 }
 
 .intro-btn{
-    border: 1px solid  hsl(145, 100%, 20%);
-    background-color: hsl(145, 100%, 30%);
+    border: 1px solid hsl(164, 100%, 13%);
+    background-color: hsl(164, 100%, 20%);
     border-radius: 10px;
     padding: 5px 10px;
     color: white;
