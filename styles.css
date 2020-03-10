@@ -290,8 +290,8 @@ background-color: white;}
 
 .btn{
     --hue: var(--hue-neutral);
-    border: 1px solid hsl(var(--hue), 100%, 30%);
-    background-color: hsl(var(--hue), 100%, 50%);
+    border: 1px solid hsl(195, 26%, 40%);
+    background-color: hsl(195, 26%, 56%);
     border-radius: 5px;
     padding: 5px 10px;
     color: white;
@@ -300,7 +300,7 @@ background-color: white;}
 
 .btn:hover{
     color: black;
-    background-color: hsl(var(--hue), 100%, 60%);
+    background-color: hsl(195, 26%, 66%);
 }
 
 .btn.correct{
