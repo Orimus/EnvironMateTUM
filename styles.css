@@ -249,6 +249,12 @@ background-color: white;}
     right: 110px;
 }
 
+.gifWinken{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 .level-grid{
     position: relative;
     left: 4%;
@@ -405,6 +411,12 @@ background-color: white;}
 .intro-btn:hover{
     color: black;
     background-color: hsl(145, 100%, 40%);
+}
+
+.rechtsUnten{
+    position: absolute;
+    right: 22px;
+    bottom: 23%;
 }
 
 

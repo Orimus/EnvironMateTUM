@@ -18,6 +18,9 @@
         class="figure hide">
     <img id="forscherW" src="./Bilder/professorfrauneu.png" alt="Forscherin mit  Brett" height="301" width="124"
         class="figure2 hide">
+    <img id="forscherWinken" src="./Video/Winken-gesamt.gif" alt="Forscher winken" height="335" width="374"
+        class="figure">
+    <img src="./Bilder/seal.png" class="hide" height="100px" width="100px" id="zertifikat">
     <video src="./Video/Klimawandel_Vid.mp4" controls class="hide" id="klimaVideo">
         Ihr Browser kann dieses Video nicht wiedergeben.<br />
         Dieser Film zeigt eine Demonstration des video-Elements.
@@ -76,13 +79,18 @@
     </div>
 
     <div id="endScreen" class="endScreen-container hide">
-        <div id="endText" class="end-container">
+        <img src="./Bilder/seal.png" class="hide" height="100px" width="100px" id="zertifikat">
+        <div class="end-container">
+            <div id="endText"></div>
+
+            <button id="druckenBtn" class="btn-ora rechtsUnten">DRUCKEN</button>
 
         </div>
         <div id="endButtons" class="endBubble">
             <button id="nochmalVersuchenBtn" class="btn-ora">NOCHMAL VERSUCHEN</button>
             <button id="spielVerlassenBtn" class="btn-ora">SPIEL VERLASSEN</button>
         </div>
+
     </div>
 
 
@@ -98,10 +106,9 @@
             <input type="text" id="name-eingabe" placeholder="Vorname">
             <input type="text" id="alter-eingabe" placeholder="Alter">
             <div id="switch-beschreibung">
-                <h1 class="text" id="GV">Gehörlosen Version</h1>
-                <h2 class="text2" id="GVUnterschrift">(Empfohlen für die Benutzung im Unterricht oder an
-                    öffentlichen
-                    Plätzen)</h2>
+                <h1 class="text" id="GV">Ton ist aktiviert</h1>
+                <h2 class="text2" id="GVUnterschrift">(Empfohlen für die Benutzung Zuhause oder an ungestörten Orten)
+                </h2>
             </div>
             <label class="switch">
                 <input type="checkbox" name="checkbox">

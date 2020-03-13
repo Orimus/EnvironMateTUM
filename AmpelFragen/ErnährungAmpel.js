@@ -1,7 +1,7 @@
 export const ernaehrungFragenA1 = [
 
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level1/lvl1background.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level1/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level1/apfel_biobayern.png",
             "./Bilder/Ampel/Ernährung/Level1/apfel_bioitalien.png",
@@ -26,7 +26,7 @@ export const ernaehrungFragenA1 = [
 
 export const ernaehrungFragenA2 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level2/lvl2background.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level2/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level2/flasche3.png",
             "./Bilder/Ampel/Ernährung/Level2/flasche2.png",
@@ -50,11 +50,11 @@ export const ernaehrungFragenA2 = [
 
 export const ernaehrungFragenA3 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level3/lvl3background.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level3/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level3/pommes.png",
             "./Bilder/Ampel/Ernährung/Level3/käsesemmel.png",
-            "./Bilder/Ampel/Ernährung/Level3/beef-1239198_1920.jpg"
+            "./Bilder/Ampel/Ernährung/Level3/CHeeseburger.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },
@@ -74,11 +74,11 @@ export const ernaehrungFragenA3 = [
 
 export const ernaehrungFragenA4 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level4/lvl4background.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level4/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Ernährung/Level4/milch1.png",
-            "./Bilder/Ampel/Ernährung/Level4/hafermilch2.png",
-            "./Bilder/Ampel/Ernährung/Level4/sojamlich.png"
+            "./Bilder/Ampel/Ernährung/Level4/Milch.png",
+            "./Bilder/Ampel/Ernährung/Level4/Hafermilch.png",
+            "./Bilder/Ampel/Ernährung/Level4/Sojamilch.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },
@@ -87,19 +87,19 @@ export const ernaehrungFragenA4 = [
         ],
         type: "ampel",
         question: "Beim Bäcker willst du dir in der Pause eine heiße Schokolade kaufen. Zum Glück hat dein Bäcker mehrere Alternativen: ",
-        answers:[
-            {text: "Eine Tasse heiße Schokolade mit Kuhmilch.", correct: "wrong"},
-            {text: "Eine Tasse heiße Schokolade mit Hafermilch.", correct: "correct"},
-            {text: "Eine Tasse heiße Schokolade mit Sojamilch.", correct: "ok"},
-            ],
+        answers: [
+            { text: "Eine Tasse heiße Schokolade mit Kuhmilch.", correct: "wrong" },
+            { text: "Eine Tasse heiße Schokolade mit Hafermilch.", correct: "correct" },
+            { text: "Eine Tasse heiße Schokolade mit Sojamilch.", correct: "ok" },
+        ],
         expl: "Tierische Lebensmittel, also auch Kuhmilch, verbrauchen in der Produktion viel Energie. Zusätzlich muss noch Futter für die Kuh angebaut werden, und sie stößt bei der Verdauung das klimaschädliche Gas Methan aus. Ein Glas pflanzliche Hafer- oder Sojamilch verursacht im Vergleich nur etwa ein Drittel der CO2-Emissionen. Soja wird oft aus anderen Ländern importiert, Hafer wächst auf europäischen Ackern. Quelle: Albert Schweitzer Stiftung, Quarks."
     },
-    
+
 ]
 
 export const ernaehrungFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Ernährung/Level5/lvl5background.png",
+        hintergrund: "./Bilder/Ampel/Ernährung/Level5/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Ernährung/Level5/vegan.png",
             "./Bilder/Ampel/Ernährung/Level5/traditionell.png",
@@ -112,20 +112,14 @@ export const ernaehrungFragenA5 = [
         ],
         type: "ampel",
         question: "Du kaufst für das Wochenendfrühstück ein. Du entscheidest dich für … ",
-        answers:[
-            {text: "… Das vegane Frühstück: \n 1 Glas frisch gepresster Orangensaft, 2 Scheiben Vollkornbrot mit Margarine und Honig, einen Obstsalat mit Apfel, Birne und Banane.", correct: "correct"},
-            {text: "… Das traditionelle Frühstück: \n 1 Glas Milch, 2 gekochte Eier, 1 Scheibe Brot mit Butter und Schinken, eine Scheibe Brot mit Butter und Käse.", correct: "ok"},
-            {text: "Das vegetarische Frühstück: \n 1 Glas frisch gepresster Orangensaft, 1 Schale Joghurt mit Haferflocken und einer halben Mango, 1 Scheibe Brot mit Butter und Honig und 1 gekochtes Ei.", correct: "wrong"},
-            ],
+        answers: [
+            { text: "… Das vegane Frühstück: \n 1 Glas frisch gepresster Orangensaft, 2 Scheiben Vollkornbrot mit Margarine und Honig, einen Obstsalat mit Apfel, Birne und Banane.", correct: "correct" },
+            { text: "… Das traditionelle Frühstück: \n 1 Glas Milch, 2 gekochte Eier, 1 Scheibe Brot mit Butter und Schinken, eine Scheibe Brot mit Butter und Käse.", correct: "ok" },
+            { text: "Das vegetarische Frühstück: \n 1 Glas frisch gepresster Orangensaft, 1 Schale Joghurt mit Haferflocken und einer halben Mango, 1 Scheibe Brot mit Butter und Honig und 1 gekochtes Ei.", correct: "wrong" },
+        ],
         expl: "Das traditionelle Frühstück verursacht ungefähr 1 Kilogramm CO2. Das vegetarische Frühstück allerdings noch mehr, denn Joghurt, Eier und Butter sind alles tierische Produkte, die besonders energieintensiv hergestellt werden müssen. Das vegane Frühstück verursacht weniger als die Hälfte an klimaschädlichen Treibhausgasen. Quelle: klimatarier.com"
     },
-        
+
 ]
-    /*
-       
-    
-    
-        
-    
-        */
+
 

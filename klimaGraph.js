@@ -96,7 +96,7 @@ export function adjustKlimaGraph(tempPlus, color, level) {
     koordsystem.beginPath();
     koordsystem.moveTo(40 + level * levelDist, Y);
     Y = Y - tempPlus * tempDist * 2;
-    if (Y < maxY - 4 * tempDist) {
+    if (Y <= maxY - 4 * tempDist) {
         Y = maxY - 4 * tempDist;
         gameO = true
     }
@@ -112,6 +112,11 @@ export function adjustKlimaGraph(tempPlus, color, level) {
 export function resetGraph() {
     Y = maxY;
     koordsystem.clearRect(0, 0, maxX, maxY);
+    koordsystem.beginPath();
+    koordsystem.moveTo(0, 0);
+    koordsystem.lineTo(0, 0);
+    koordsystem.strokeStyle = "black";
+    koordsystem.stroke();
     drawKlimaGraph();
 }
 

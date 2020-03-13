@@ -1,6 +1,6 @@
 export const VerkehrFragenA1 = [
     {
-        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Verkehr/Level1/Economy.png",
             "./Bilder/Ampel/Verkehr/Level1/Business.png",
@@ -24,11 +24,11 @@ export const VerkehrFragenA1 = [
 
 export const VerkehrFragenA2 = [
     {
-        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level2/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Verkehr/Level2/Zug.png",
+            "./Bilder/Ampel/Verkehr/Level2/EScooter.png",
             "./Bilder/Ampel/Verkehr/Level2/Auto.png",
-            "./Bilder/Ampel/Verkehr/Level2/Flugzeug.png"
+            "./Bilder/Ampel/Verkehr/Level2/Fahrrad.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },
@@ -48,11 +48,11 @@ export const VerkehrFragenA2 = [
 
 export const VerkehrFragenA3 = [
     {
-        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level3/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Verkehr/Level3/Fahrrad.png",
-            "./Bilder/Ampel/Verkehr/Level3/Escooter.png",
-            "./Bilder/Ampel/Verkehr/Level3/Auto.png"
+            "./Bilder/Ampel/Verkehr/Level3/Dachträger.png",
+            "./Bilder/Ampel/Verkehr/Level3/HalbesGepäck.png",
+            "./Bilder/Ampel/Verkehr/Level3/UnnötigesGepäck.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },
@@ -72,9 +72,9 @@ export const VerkehrFragenA3 = [
 
 export const VerkehrFragenA4 = [
     {
-        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level4/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Verkehr/Level4/Kleinwagen.png",
+            "./Bilder/Ampel/Verkehr/Level4/Minivan.png",
             "./Bilder/Ampel/Verkehr/Level4/SUV.png",
             "./Bilder/Ampel/Verkehr/Level4/Sportwagen.png"
         ],
@@ -96,11 +96,11 @@ export const VerkehrFragenA4 = [
 
 export const VerkehrFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Verkehr/Level1/Kopie von badezimmer.png",
+        hintergrund: "./Bilder/Ampel/Verkehr/Level5/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Verkehr/Level5/Minivan.png",
-            "./Bilder/Ampel/Verkehr/Level5/SUV.png",
-            "./Bilder/Ampel/Verkehr/Level5/Sportwagen.png"
+            "./Bilder/Ampel/Verkehr/Level5/EBike.png",
+            "./Bilder/Ampel/Verkehr/Level5/Elektroauto.png",
+            "./Bilder/Ampel/Verkehr/Level5/ÖPNV.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },

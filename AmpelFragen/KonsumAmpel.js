@@ -1,8 +1,8 @@
 export const konsumFragenA1 = [
     {
-        hintergrund: "./Bilder/Ampel/Konsum/Level1/Kopie von supermarkt.png",
+        hintergrund: "./Bilder/Ampel/Konsum/Level1/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Konsum/Level1/handy_teller.png",
+            "./Bilder/Ampel/Konsum/Level1/Nachbarin.png",
             "./Bilder/Ampel/Konsum/Level1/plastikgeschirr.png",
             "./Bilder/Ampel/Konsum/Level1/pappgeschirr.png"
         ],
@@ -24,7 +24,7 @@ export const konsumFragenA1 = [
 
 export const konsumFragenA2 = [
     {
-        hintergrund: "./Bilder/Ampel/Konsum/Level2/einkaufszentrum.png",
+        hintergrund: "./Bilder/Ampel/Konsum/Level2/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Konsum/Level2/mülleimer.png",
             "./Bilder/Ampel/Konsum/Level2/rucksack.png",
@@ -48,7 +48,7 @@ export const konsumFragenA2 = [
 
 export const konsumFragenA3 = [
     {
-        hintergrund: "./Bilder/Ampel/Konsum/Level3/supermarkt.png",
+        hintergrund: "./Bilder/Ampel/Konsum/Level3/Hintergrund.png",
         items: [
             "./Bilder/Ampel/Konsum/Level3/normalerblock.png",
             "./Bilder/Ampel/Konsum/Level3/recyclingblock.png",
@@ -72,11 +72,11 @@ export const konsumFragenA3 = [
 
 export const konsumFragenA4 = [
     {
-        hintergrund: "./Bilder/Ampel/Konsum/Level4/bekleidungsgeschäft.png",
+        hintergrund: "./Bilder/Ampel/Konsum/Level4/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Konsum/Level4/shirt.png",
-            "./Bilder/Ampel/Konsum/Level4/shirt.png",
-            "./Bilder/Ampel/Konsum/Level4/bioshirt.png"
+            "./Bilder/Ampel/Konsum/Level4/StandartBangladesh.png",
+            "./Bilder/Ampel/Konsum/Level4/StandartPolen.png",
+            "./Bilder/Ampel/Konsum/Level4/BioPolen.png"
         ],
         koords: [
             { bottom: "35%", left: "5%" },
@@ -98,10 +98,10 @@ export const konsumFragenA4 = [
 
 export const konsumFragenA5 = [
     {
-        hintergrund: "./Bilder/Ampel/Konsum/Level5/küche.png",
+        hintergrund: "./Bilder/Ampel/Konsum/Level5/AlleHintergründe.png",
         items: [
             "./Bilder/Ampel/Konsum/Level5/restmülltonne.png",
-            "./Bilder/Ampel/Konsum/Level5/gelbersack.png",
+            "./Bilder/Ampel/Konsum/Level5/gelber sack.png",
             "./Bilder/Ampel/Konsum/Level5/papiertonne.png"
         ],
         koords: [

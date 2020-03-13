@@ -11,6 +11,8 @@ const klimaVideo = document.getElementById("klimaVideo");
 const klimaVideoSub = document.getElementById("klimaVideoSub");
 const forscherM = document.getElementById("forscherM");
 const forscherW = document.getElementById("forscherW");
+const forscherWinken = document.getElementById("forscherWinken");
+const zertifikat = document.getElementById("zertifikat");
 const GVUnterschrift = document.getElementById("GVUnterschrift");
 const GVAusgabe = document.getElementById("GV");
 const GVswitch = document.querySelector("input[name=checkbox]");
@@ -34,6 +36,7 @@ const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const NochmalButton = document.getElementById("nochmalVersuchenBtn");
 const VerlassenButton = document.getElementById("spielVerlassenBtn");
+const druckenButton = document.getElementById("druckenBtn")
 const klimaBasisButton = document.getElementById("kauf-btn-basis");
 const klimaXLButton = document.getElementById("kauf-btn-XL");
 const storyNextButton = document.getElementById("intro-next");
@@ -117,7 +120,8 @@ EnergieButton.addEventListener("click", setFragen);
 klimaXLButton.addEventListener("click", kaufenXL);
 klimaBasisButton.addEventListener("click", kaufenBasis);
 NochmalButton.addEventListener("click", retry);
-VerlassenButton.addEventListener("click", leave)
+VerlassenButton.addEventListener("click", leave);
+druckenButton.addEventListener("click", drucken);
 
 
 
@@ -131,6 +135,7 @@ function startGame() {
     MenuContainer.classList.add("hide");
     startButton.classList.add("hide");
     restartButton.classList.add("hide");
+    forscherWinken.classList.add("hide")
 
     score = 0;
 
@@ -290,8 +295,8 @@ function videoEnde() {
         else {
 
             levelButtons[levelAkt - 1].classList.add("wrong");
-            adjustKlimaGraph(2.5, "red", levelAkt - 1);
-            gradErwärmung += 2.5;
+            adjustKlimaGraph(1, "red", levelAkt - 1);
+            gradErwärmung += 1;
         }
 
         score = 0;
@@ -384,7 +389,7 @@ function backToKat() {
         levelAkt += 1;
 
 
-        if (levelAkt < 3) {
+        if (levelAkt < 5) {
             levelButtons[levelAkt].classList.remove("btn-grau");
             levelButtons[levelAkt].classList.add("btn");
             levelButtons[levelAkt].addEventListener("click", backToKat);
@@ -734,12 +739,12 @@ function selectAnswer(e) {
 
 function gvChange(e) {
     if (GVswitch.checked) {
-        GVAusgabe.innerText = "Hörenden Version";
-        GVUnterschrift.innerText = "(Empfohlen für die Benutzung Zuhause oder an ungestörten Orten)";
+        GVAusgabe.innerText = "Ton ist deaktiviert";
+        GVUnterschrift.innerText = "(Empfohlen für die Benutzung im Unterricht oder an öffentlichen Plätzen)";
     }
     else {
-        GVAusgabe.innerText = "Gehörlosen Version";
-        GVUnterschrift.innerText = "(Empfohlen für die Benutzung im Unterricht oder an öffentlichen Plätzen)";
+        GVAusgabe.innerText = "Ton ist aktiviert";
+        GVUnterschrift.innerText = "(Empfohlen für die Benutzung Zuhause oder an ungestörten Orten)";
     }
 }
 
@@ -788,7 +793,7 @@ export function gameOver() {
     let alterAkt = JahrAkt - 2020 + parseInt(eingabeAlter);
     storyFortschritt = 100;
     showForscher();
-    if (levelAkt < 3) {
+    if (levelAkt < 5) {
 
 
         intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten "
@@ -823,7 +828,23 @@ export function gameOver() {
 
 }
 
+function drucken() {
+    hideForscher();
+    endScreen.classList.add("hide");
+    zertifikat.classList.remove("hide");
+
+
+    window.print();
+
+    forscherM.classList.remove("hide");
+    forscherW.classList.remove("hide");
+    endScreen.classList.remove("hide");
+    zertifikat.classList.add("hide");
+}
+
 function retry() {
+    let i = 0;
+
     restart = true;
     anzKatDone = 0;
     score = 0;
@@ -841,7 +862,9 @@ function retry() {
     ampelConatiener.innerText = "Level " + (levelAkt + 1) + ":";
     ampelConatiener.appendChild(ampel);
 
-
+    for (i = 0; i < 5; i++) {
+        clearStatusClass(levelButtons[i])
+    }
 
     hideForscher();
     resetGraph();
