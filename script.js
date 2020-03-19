@@ -797,7 +797,7 @@ export function gameOver() {
 
 
         intro.innerText = "Du hast es leider nicht geschafft die Erde zu retten "
-        endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+        endText.innerText = "Es ist das Jahr " + JahrAkt + ", du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren. \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n  ";
         //videoNextButton.classList.remove("hide");
 
         levelButtons[levelAkt].removeEventListener("click", backToKat);
@@ -812,25 +812,32 @@ export function gameOver() {
         }
         else if (gradErwärmung < 1.5) {
             intro.innerText = "Das war schon ganz gut, aber es gibt noch Luft nach oben, " + eingabeName + + "."
-            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + " und diese Folgen sind bereits zu spüren: \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt " + " und diese Folgen sind bereits zu spüren: \n" + "Bis zu 2 Milliarden Menschen sind von Wasserknappheit betroffen, das ist mehr als 20 mal die Einwohner Deutschlands. \n 20-30 % aller biologischen Arten (also Pflanzen und Tiere) sind vom Aussterben bedroht. \n Der Abschmelzprozess Grönlands und der westlichen Antarktis ist unaufhaltbar geworden. \n  ";
         }
         else if (gradErwärmung < 2) {
             intro.innerText = "Mit deiner Hlfe ist es uns gelungen die Klimaerwärmung in Grenzen zu halten, " + eingabeName + + "."
-            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt " + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n  ";
         }
         else {
             intro.innerText = eingabeName + ", Du hast es leider nicht geschafft die Erde zu retten. "
-            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt" + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n Wenn du genauere Folgen für mehrere Temperaturen wissen möchtest, schau doch zum Beispiel hier: www.oekosystem-erde.de/html/klimawandel-03.html ";
+            endText.innerText = "Es ist das Jahr 2050, du bist jetzt " + alterAkt + " Jahre alt " + "und diese Folgen sind bereits zu spüren: \n" + "Bis zu einem Fünftel der Weltbevölkerung ist durch häufigere Überschwemmungen gefährdet. \n Es beginnt ein weltweites Artensterben, vor allem in Feuchtgebieten, Wäldern und Korallenriffen. \n 300 Millionen Menschen, mehr als 3 mal die Einwohner Deutschlands, sind von dauerhafter Überschwemmung ihres Zuhauses betroffen. \n In Europa herrscht alle 10 Jahre eine schwere Dürre. \n  ";
         }
     }
+    let txt = "hier";
+    endText.innerText += "Wenn du dich dafür interessierst, welche Auswirkungen eine Erderwärmung von mehr als 4°C für die Menschheit hat, dann klicke "
+    endText.innerHTML += txt.link("https://www.nabu.de/umwelt-und-ressourcen/klima-und-luft/klimawandel/11420.html")
 
 
 
 }
 
 function drucken() {
+    let winWidth = window.document.body.clientWidth
+
     hideForscher();
     endScreen.classList.add("hide");
+
+    //zertifikat.width = winWidth
     zertifikat.classList.remove("hide");
 
 
