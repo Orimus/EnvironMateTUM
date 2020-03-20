@@ -74,8 +74,8 @@ export const konsumFragenA4 = [
     {
         hintergrund: "./Bilder/Ampel/Konsum/Level4/Hintergrund.png",
         items: [
-            "./Bilder/Ampel/Konsum/Level4/StandartBangladesh.png",
-            "./Bilder/Ampel/Konsum/Level4/StandartPolen.png",
+            "./Bilder/Ampel/Konsum/Level4/StandardBangladesh.png",
+            "./Bilder/Ampel/Konsum/Level4/StandardPolen.png",
             "./Bilder/Ampel/Konsum/Level4/BioPolen.png"
         ],
         koords: [

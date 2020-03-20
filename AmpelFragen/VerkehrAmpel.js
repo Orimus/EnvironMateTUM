@@ -36,13 +36,13 @@ export const VerkehrFragenA2 = [
             { bottom: "35%", left: "65%" },
         ],
         type: "ampel",
-        question: "Euer Sommerurlaub soll an das Mittelmeer gehen (ca. 1500 km). Dafür könntet ihr fliegen, mit dem Auto fahren oder den Zug nehmen. Aber: Was ist denn auf der Langstrecke die beste Wahl?",
+        question: "Für deinen Weg zur Schule gibt es mehrere Optionen. Welche wählst du?",
         answers: [
-            { text: "Zug", correct: "correct" },
+            { text: "Escooter", correct: "wrong" },
             { text: "Auto", correct: "ok" },
-            { text: "Flugzeug", correct: "wrong" },
+            { text: "Fahrrad", correct: "correct" },
         ],
-        expl: "Zu fliegen ist oft die schlechteste Option, auch wenn es relativ schnell geht. Das Flugzeug produziert für 4 Personen über 4 mal so viele schädliche treibhausgase aus wie das Auto. Noch sparsamer ist der Zug. Er kommt mit etwa 75 % der Abgase des Autos aus. Übrigens: Wenn ihr nur zu zweit in den Urlaub fahrt, erzeugt das Auto fast 3 mal so viele Treibhausgase wie ein Zug pro Person."
+        expl: "Gerade mit ausleihbaren E-Scootern wird oft nicht gut umgegangen, weswegen sie teilweise nach nur 3 Monaten schon kaputt sind. Bei der Produktion brauchen sie zudem viel Energie, da die Akkus viele Rohstoffe brauchen. Daher lieber Fahrradfahren oder laufen. Das Auto ist die schlechteste Wahl, es benötigt selbst unter den besten Voraussetzungen etwa doppelt so viel Energie wie ein E-Scooter. Quelle: https://de.statista.com/statistik/daten/studie/1037358/umfrage/ \n co2-emissionen-von-e-scootern-im-vergleich-mit-anderen-verkehrsmitteln-in-den-usa/        "
     },
 ]
 
@@ -90,7 +90,7 @@ export const VerkehrFragenA4 = [
             { text: "SUV (Stadtgeländewagen mit erhöhtem Komfort) / Geländewagen", correct: "ok" },
             { text: "Sportwagen", correct: "wrong" }
         ],
-        expl: "Ein SUV ist schwerer als ein normales Auto und hat in der Regel Motoren mit mehr Leistung. Dadurch braucht er mehr Verkehr zum Fahren. Noch schlechter sind Sportwagen, die durch besonders starke Motoren extrem viel Benzin verbrauchen. Quelle: https://www.greenpeace.de/sites/www.greenpeace.de/files/publications/s02571_gp_report_suv_09_2019_es.pdf"
+        expl: "Ein SUV ist schwerer als ein normales Auto und hat in der Regel Motoren mit mehr Leistung. Dadurch braucht er mehr Verkehr zum Fahren. Noch schlechter sind Sportwagen, die durch besonders starke Motoren extrem viel Benzin verbrauchen. Quelle: https://www.greenpeace.de/sites/www.greenpeace.de/ \n files/publications/s02571_gp_report_suv_09_2019_es.pdf"
     }
 ]
 

@@ -123,7 +123,8 @@ NochmalButton.addEventListener("click", retry);
 VerlassenButton.addEventListener("click", leave);
 druckenButton.addEventListener("click", drucken);
 
-
+document.body.background = "./Bilder/pngZeichenfläche 1.png";
+document.body.style.backgroundSize = "100% 100%";
 
 
 function startGame() {

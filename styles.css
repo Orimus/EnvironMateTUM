@@ -194,8 +194,8 @@ body.ok{
 }
 
 .konto-container{
-    right: 2%;
-    top: 3%;
+    right: 20px;
+    top: 1.5%;
     position: fixed; 
     width: 150px;
     max-width: 80%;
@@ -210,8 +210,8 @@ body.ok{
     grid-template-columns: repeat(2,auto);
     gap: 5px;
 
-    right: 17%;
-    top: 3%;
+    right: 200px;
+    top: 1.5%;
     position: fixed; 
     width: 150px;
     max-width: 80%;
