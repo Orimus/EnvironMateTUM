@@ -38,8 +38,8 @@ export const VerkehrFragenA2 = [
         type: "ampel",
         question: "Für deinen Weg zur Schule gibt es mehrere Optionen. Welche wählst du?",
         answers: [
-            { text: "Escooter", correct: "wrong" },
-            { text: "Auto", correct: "ok" },
+            { text: "Escooter", correct: "ok" },
+            { text: "Auto", correct: "wrong" },
             { text: "Fahrrad", correct: "correct" },
         ],
         expl: "Gerade mit ausleihbaren E-Scootern wird oft nicht gut umgegangen, weswegen sie teilweise nach nur 3 Monaten schon kaputt sind. Bei der Produktion brauchen sie zudem viel Energie, da die Akkus viele Rohstoffe brauchen. Daher lieber Fahrradfahren oder laufen. Das Auto ist die schlechteste Wahl, es benötigt selbst unter den besten Voraussetzungen etwa doppelt so viel Energie wie ein E-Scooter. Quelle: https://de.statista.com/statistik/daten/studie/1037358/umfrage/ \n co2-emissionen-von-e-scootern-im-vergleich-mit-anderen-verkehrsmitteln-in-den-usa/        "

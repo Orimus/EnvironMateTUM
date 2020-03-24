@@ -222,8 +222,16 @@ function storyWeiter() {
         storyFortschritt += 1;
     }
     else if (storyFortschritt == 99) {
-        klimaPaketUebersicht(punkteNeu);
-        introContainer.classList.add("hide");
+        updateKlimaButtons();
+        if (score < 3.5) {
+            klimaPaketUebersicht(punkteNeu);
+            introContainer.classList.add("hide");
+        }
+        else {
+            storyNextButton.classList.add("hide");
+            intro.innerText = "Da du dich schon für die klimafreundlichsten Antworten entschieden hast, kannst du den Klimagraph nicht durch ein Klimapaket verbessern.";
+        }
+
         Container.classList.add("hide");
         videoNextButton.innerText = "Weiter";
         videoNextButton.classList.remove("hide");
@@ -275,6 +283,7 @@ function videoEnde() {
     }
     else if (skipCounter == 2) {
         klimaPaketHide();
+        storyNextButton.classList.remove("hide");
         videoNextButton.classList.add("hide");
 
 
@@ -469,6 +478,8 @@ function kaufenBasis() {
             score = 4;
         }
     }
+    updateAmpel();
+    updateKlimaButtons();
 }
 
 function kaufenXL() {
@@ -483,6 +494,8 @@ function kaufenXL() {
         changeLC(-4);
         score += 3.5;
     }
+    updateAmpel();
+    updateKlimaButtons();
 }
 
 function levelUebersicht() {
@@ -677,7 +690,13 @@ function selectAnswerAmpel(e) {
 }
 
 function updateAmpel() {
-    let scoreRelativ = score / anzKatDone;
+    let scoreRelativ
+    if (anzKatDone == 0) {
+        scoreRelativ = score / 4;
+    }
+    else {
+        scoreRelativ = score / anzKatDone;
+    }
     console.log(scoreRelativ)
     if (scoreRelativ >= 0.875) {
         ampel.src = "./Bilder/pnggrün.png";
@@ -688,6 +707,32 @@ function updateAmpel() {
     }
     else {
         ampel.src = "./Bilder/pngrot.png";
+    }
+}
+
+function updateKlimaButtons() {
+    let coins = getCoins();
+    if (coins < 2) {
+        klimaBasisButton.classList.remove("btn-gr");
+        klimaXLButton.classList.remove("btn-gr");
+
+        klimaBasisButton.classList.add("btn-grau-rec");
+        klimaXLButton.classList.add("btn-grau-rec");
+    }
+    else if (coins < 4) {
+        klimaXLButton.classList.remove("btn-gr");
+        klimaBasisButton.classList.remove("btn-grau-rec");
+
+        klimaXLButton.classList.add("btn-grau-rec");
+        klimaBasisButton.classList.add("btn-gr");
+    }
+    else {
+        klimaBasisButton.classList.remove("btn-grau-rec");
+        klimaXLButton.classList.remove("btn-grau-rec");
+
+        klimaBasisButton.classList.add("btn-gr");
+        klimaXLButton.classList.add("btn-gr");
+
     }
 }
 

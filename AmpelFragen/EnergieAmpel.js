@@ -45,11 +45,11 @@ export const energieFragenA2 = [
         type: "ampel",
         question: "Du möchtest dich waschen, wie tust du dies am effizientesten innerhalb eine Woche?",
         answers: [
-            { text: "Ich gehe jeden Tag Baden.", correct: "ok" },
-            { text: "Ich Dusche jeden Tag für 15 Minuten", correct: "wrong" },
-            { text: "Ich Dusche Montag, Mittwoch und Freitag jeweils 15 Minuten. Am Sonntag nehme ich ein Bad.", correct: "correct" },
+            { text: "Ich gehe jeden Tag Baden.", correct: "wrong" },
+            { text: "Ich Dusche jeden Tag.", correct: "ok" },
+            { text: "Ich Dusche Montag, Mittwoch und Freitag. Am Sonntag nehme ich ein Bad.", correct: "correct" },
         ],
-        expl: "Duschen verbraucht pro Minute in etwa 12l. Eine durchschnittliche Badewanne fasst ca. 140l. So ergibt sich ein Wasserverbrauch pro Woche von: \n 140*7 = 980 Liter \n 15*12*7 = 1260 Liter \n 3*12*15+140 = 680 \n Um deinen Wasserverbrauch und somit auch deinen Energieverbrauch zu reduzieren kannst du also, wenn du nur jeden zweiten Tag duschst, sogar am Wochenende ein Bad nehmen. Wenn du allerdings unter 12 Minuten duschst, ist das Duschen dem Baden vorzuziehen."
+        expl: "Duschen verbraucht pro Minute in etwa 12l, die durchschnittliche Duschdauer liegt dabei bei 6 Minuten. Einmal Duschen verbraucht also ca. 72l. Eine durchschnittliche Badewanne fasst ca. 140l. Um deinen Wasserverbrauch und somit auch deinen Energieverbrauch zu reduzieren kannst du also, wenn du nur jeden zweiten Tag duschst, sogar am Wochenende ein Bad nehmen. Wenn du allerdings über 12 Minuten duschst, ist das Baden dem Duschen vorzuziehen."
     },
     
     
